@@ -1,0 +1,26 @@
+{
+  "name": "jsbash",
+  "version": "1.0.0",
+  "description": "Helpers for bash like shell scripting in JavaScript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bradyholt/jsbash.git"
+  },
+  "keywords": [
+    "javascript",
+    "bash",
+    "shell",
+    "cli",
+    "scripting"
+  ],
+  "author": "Brady Holt",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bradyholt/jsbash/issues"
+  },
+  "homepage": "https://github.com/bradyholt/jsbash#readme"
+}
