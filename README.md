@@ -60,7 +60,7 @@ echo(`Hello world`);
 If you do not want to install globally, you can download jsbash manually and include it directly.  This is a good option for scripts being run on a remote machine where you may not have the option to install npm packages globally.  First, grab the jsbash library:
 
 ```
-wget <url> jsbash.js
+wget https://raw.githubusercontent.com/bradyholt/jsbash/master/index.js jsbash.js
 ```
 
 Then, just reference the file with a relative path:
@@ -77,7 +77,7 @@ echo(`Hello world`);
 If you don't want to fuss with downloading anything or referencing external dependencies, you can simply copy/paste jsbash at the top of your script.  To grab jsbash into your clipboard you can run:
 
 ```
-curl <url> | pbcopy
+curl https://raw.githubusercontent.com/bradyholt/jsbash/master/index.js | pbcopy
 ```
 
 ```
