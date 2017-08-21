@@ -1,6 +1,6 @@
 {
   "name": "jsbash",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "Helpers for bash like shell scripting in JavaScript",
   "main": "index.js",
   "repository": {
