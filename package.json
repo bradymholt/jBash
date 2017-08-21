@@ -19,5 +19,12 @@
   "bugs": {
     "url": "https://github.com/bradyholt/jsbash/issues"
   },
-  "homepage": "https://github.com/bradyholt/jsbash#readme"
+  "homepage": "https://github.com/bradyholt/jsbash#readme",
+  "dependencies": {
+    "uglify-es": "^3.0.28"
+  },
+  "scripts": {
+    "build": "npx uglifyjs --comments=all --mangle --compress --verbose index.js -o index.min.js",
+    "prepublish": "npm run build && npm version minor"
+  }
 }
