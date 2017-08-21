@@ -2,6 +2,8 @@
 
 Helpers for bash like shell scripting in JavaScript
 
+[![NPM Package](https://img.shields.io/npm/v/jsbash.svg)](https://www.npmjs.com/package/jsbash)
+
 ## Examples
 
 ```
