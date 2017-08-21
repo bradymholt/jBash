@@ -31,7 +31,7 @@ writeFile("hello.txt", "Hello world")
 
 // Execute comand and assign stdout to variable
 let result = $(`echo "Hello world"`);
-> "Hellow world"
+> "Hello world"
 
 // Execute command stream output to console
 $$(`ping -t 10 www.google.com`);
