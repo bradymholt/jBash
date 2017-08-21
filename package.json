@@ -7,20 +7,14 @@
     "type": "git",
     "url": "git+https://github.com/bradyholt/jsbash.git"
   },
-  "keywords": [
-    "javascript",
-    "bash",
-    "shell",
-    "cli",
-    "scripting"
-  ],
+  "keywords": ["javascript", "bash", "shell", "cli", "scripting"],
   "author": "Brady Holt",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/bradyholt/jsbash/issues"
   },
   "homepage": "https://github.com/bradyholt/jsbash#readme",
-  "dependencies": {
+  "devDependencies": {
     "uglify-es": "^3.0.28"
   },
   "scripts": {
