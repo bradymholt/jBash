@@ -38,7 +38,7 @@ When you run `./myscript.js`, it will output `Hello World`.
 | ``echo $config > config.txt`` | ``$(`echo ${config} > config.txt`)`` |                                         |
 |                           | ``writeFile(`config.txt` config)``   | alternative: writeFile helper           |
 | ``result=$(command.sh)``      | ``result=$(`command.sh`)``          | $(...) buffers output                   |
-| ``eval ping www.google.com  | ``eval(`ping www.google.com`)``      | eval() streams output                   |
+| ``eval ping www.google.com``  | ``eval(`ping www.google.com`)``      | eval() streams output                   |
 
 ## Installation
 
