@@ -55,7 +55,7 @@ Once it is installed globally, you can write your script with a jbash [shebang](
 ```
 #!/usr/local/bin/jbash
 
-echo (`Hello World`)
+echo(`Hello World`)
 ```
 
 ### require
