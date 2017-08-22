@@ -1,6 +1,6 @@
 {
   "name": "jsbash",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "Helpers for bash like shell scripting in JavaScript",
   "main": "index.js",
   "bin": "./bin/jsbash.js",
@@ -8,7 +8,13 @@
     "type": "git",
     "url": "git+https://github.com/bradyholt/jsbash.git"
   },
-  "keywords": ["javascript", "bash", "shell", "cli", "scripting"],
+  "keywords": [
+    "javascript",
+    "bash",
+    "shell",
+    "cli",
+    "scripting"
+  ],
   "author": "Brady Holt",
   "license": "MIT",
   "bugs": {
