@@ -26,6 +26,7 @@
   },
   "scripts": {
     "build": "npx uglifyjs --comments=all --mangle --compress --verbose index.js -o index.min.js",
-    "prepublish": "npm version minor"
+    "prepublish": "npm version minor",
+    "release": "npm run build && git commit -a -m 'Minify library' && npm publish"
   }
 }
