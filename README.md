@@ -25,7 +25,7 @@ When you run `./myscript.js`, it will output `Hello World`.
 
 ## Helpers
 
-| bash                      | jBash                            | notes                                   |
+| Bash                      | jBash                            | notes                                   |
 |---------------------------|----------------------------------|-----------------------------------------|
 | ``echo "Hello"``              | ``echo(`Hello`)``                   |                                         |
 | ``$1, $2, ...``               | ``args``                             | args is an array of arguments passed in |
