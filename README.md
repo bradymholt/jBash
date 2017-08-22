@@ -76,3 +76,9 @@ require('./jbash.js)
 
 echo(`Hello World`)
 ```
+
+## Examples
+
+Looking at real-world scripts is a good way to get a feel for the library.
+
+- [release.js](https://github.com/bradyholt/cron-expression-descriptor/blob/master/scripts/release.js) - Cron Expression Descriptor release script
