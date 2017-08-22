@@ -16,7 +16,7 @@ touch myscript.js && chmod +x myscript.js
 Then, in `myscript.js`:
 
 ```
-#!/usr/local/bin/jsbash
+#!/usr/local/bin/jbash
 
 echo(`Hello world`)
 ```
@@ -53,7 +53,7 @@ npm i -g jbash
 Once it is installed globally, you can write your script with a jbash [shebang](https://en.wikipedia.org/wiki/Shebang_(Unix)) which will allow your script to be executed directly, with jBash loaded at runtime.
 
 ```
-#!/usr/local/bin/jsbash
+#!/usr/local/bin/jbash
 
 echo (`Hello World`)
 ```
