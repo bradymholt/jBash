@@ -3,6 +3,7 @@
   "version": "1.4.0",
   "description": "Helpers for bash like shell scripting in JavaScript",
   "main": "index.js",
+  "bin": "./bin/jsbash.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bradyholt/jsbash.git"

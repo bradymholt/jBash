@@ -6,7 +6,7 @@ Helpers for bash like shell scripting in JavaScript
 
 Bash scripting is great for system administration, web application deployment, data crunching, automated backups, etc. and has the advantage that it automates the exact commands you would be running in a shell terminal.  Because of this, I think of bash as bare metal scripting.  It's available on macOS and Linux platforms without an additonal installation as well.   But, if you are doing anything beyond trival tasks, bash syntax will become baffling quickly.  Single quotes, argument handling, sanitizing parameters, if/else logical statements, etc, error handling, etc. get complex ~~sometimes~~ a lot of the time.
 
-jsbash is a simple, small JavaScript library that defines some variables and functions so you can use Node.js/JavaScript for scripting but have simple and familiar bash like commands.
+jsbash is a simple, small (less than 500B) JavaScript library that defines some variables and functions so you can use Node.js/JavaScript for scripting but have simple and familiar bash like commands.
 
 ## Quick Start
 
@@ -24,7 +24,7 @@ require('jsbash');
 echo(`Hello world`)
 ```
 
-When run `./myscript.js`, it will output `Hello World`.
+When you run `./myscript.js`, it will output `Hello World`.
 
 ## Helpers
 
@@ -61,6 +61,10 @@ let result = $(`echo "Hello world"`);
 // Execute command stream output to console
 $$(`ping -t 10 www.google.com`);
 ```
+
+## Executing commands
+
+- If output is a single newline, it will be stripped so that the output will be an empty string
 
 ## Installation
 
