@@ -1,12 +1,12 @@
 {
-  "name": "jsbash",
+  "name": "jbash",
   "version": "1.6.0",
   "description": "Helpers for bash like shell scripting in JavaScript",
   "main": "index.js",
-  "bin": "./bin/jsbash.js",
+  "bin": "./bin/jbash.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bradyholt/jsbash.git"
+    "url": "git+https://github.com/bradyholt/jbash.git"
   },
   "keywords": [
     "javascript",
@@ -18,9 +18,9 @@
   "author": "Brady Holt",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/bradyholt/jsbash/issues"
+    "url": "https://github.com/bradyholt/jbash/issues"
   },
-  "homepage": "https://github.com/bradyholt/jsbash#readme",
+  "homepage": "https://github.com/bradyholt/jbash#readme",
   "devDependencies": {
     "uglify-es": "^3.0.28"
   },
