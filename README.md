@@ -27,18 +27,18 @@ When you run `./myscript.js`, it will output `Hello World`.
 
 | bash                      | jBash                            | notes                                   |
 |---------------------------|----------------------------------|-----------------------------------------|
-| echo "Hello"              | echo(``Hello``)                    |                                         |
-| $1, $2, ...               | args                             | args is an array of arguments passed in |
-| $HOME                     | env.HOME                         |                                         |
-| cd "/usr/bin"             | cd(`/usr/bin`)                   |                                         |
-| exit 1                    | exit(1)                          |                                         |
-| config=$(cat config.txt)  | config=$(`cat config.txt`)       |                                         |
-|                           | config=readFile(`config.txt`)    | alternative: readFile helper            |
+| ``echo "Hello"``              | ``echo(`Hello`)``                   |                                         |
+| ``$1, $2, ...``               | ``args``                             | args is an array of arguments passed in |
+| ``$HOME``                     | ``env.HOME``                         |                                         |
+| ``cd "/usr/bin"``             | ``cd(`/usr/bin`)``                   |                                         |
+| ``exit 1``                    | ``exit(1) ``                         |                                         |
+| ``config=$(cat config.txt)``  | ``config=$(`cat config.txt`)``       |                                         |
+|                           | ``config=readFile(`config.txt`)``    | alternative: readFile helper            |
 |                           |                                  |                                         |
-| echo $config > config.txt | $(`echo ${config} > config.txt`) |                                         |
-|                           | writeFile(`config.txt` config)   | alternative: writeFile helper           |
-| result=$(command.sh)      | result=$(`command.sh`)           | $(...) buffers output                   |
-| eval ping www.google.com  | eval(`ping www.google.com`)      | eval() streams output                   |
+| ``echo $config > config.txt`` | ``$(`echo ${config} > config.txt`)`` |                                         |
+|                           | ``writeFile(`config.txt` config)``   | alternative: writeFile helper           |
+| ``result=$(command.sh)``      | ``result=$(`command.sh`)``          | $(...) buffers output                   |
+| ``eval ping www.google.com  | ``eval(`ping www.google.com`)``      | eval() streams output                   |
 
 ## Installation
 
