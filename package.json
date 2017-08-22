@@ -20,6 +20,6 @@
   },
   "scripts": {
     "build": "npx uglifyjs --comments=all --mangle --compress --verbose index.js -o index.min.js",
-    "prepublish": "npm run build && npm version minor"
+    "prepublish": "npm version minor"
   }
 }
