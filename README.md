@@ -74,5 +74,5 @@ Then, in your script:
 #!/usr/bin/env node
 require('./jbash.js)
 
-echo (`Hello World`)
+echo(`Hello World`)
 ```
