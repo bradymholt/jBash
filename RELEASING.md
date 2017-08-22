@@ -1,5 +1,3 @@
 ```
-npm build
-git commit -a -m "commit message"
-npm publish
+npm run release
 ```

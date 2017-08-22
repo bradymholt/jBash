@@ -1,4 +1,4 @@
 #!/usr/bin/env node
 
-require('jsbash');
+require('jbash');
 require(`${process.cwd()}/${process.argv[2]}`);
