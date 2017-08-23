@@ -126,7 +126,20 @@ echo(`Hello World`)
 
 ## It's Still JavaScript
 
-When you write your shell scripts in jBash, you get to use a simple Bash like syntax but remember, it's still JavaScript!  This means you can install npm packages and use then to your heart's content.
+When you write your shell scripts in jBash, you get to use a simple Bash like syntax but remember, it's still JavaScript!  This means you can install npm packages and use them to your heart's content.
+
+Example:
+
+```
+npm install uuid
+```
+
+```
+#!/usr/local/bin/jbash
+require('uuid/v4')
+
+echo(uuidv4()) // -> '110ec58a-a0f2-4ac4-8393-c866d813b8d1'
+```
 
 ## Examples
 
