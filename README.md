@@ -71,7 +71,7 @@ result=$(`git status --porcelain`);
 
 ### eval()
 
-**eval()** should be used for running commands where the output does not need to be captured, but only printed to the console.  This helper is intended for long running commands or those where output does not need to be captured.  Exmaple: To run `npm install`:
+**eval()** should be used for running commands where the output does not need to be captured, but only printed to the console.  This helper is intended for long running commands or those where output does not need to be captured.  Example: To run `npm install`:
 
 ```
 eval(`npm install`)
