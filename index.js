@@ -1,7 +1,7 @@
 // jbash
 
 // Aliases
-args = process.argv.slice(global.shebangInvoked ? 3 : 2); global[`$@`] = args;
+args = process.argv.slice(global.shebangInvoked ? 3 : 2);
 for (let i=0;i<args.length;i++) { global[`$${i+1}`]=args[i] }
 cd = process.chdir;
 echo = console.log;

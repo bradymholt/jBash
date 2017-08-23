@@ -6,6 +6,4 @@ echo(`Hello`)
 //echo(args)
 //$1 = "dsd";
 echo(args);
-echo($1);
-echo($HOME);
-echo(Object.keys($));
+echo(global['$@']);
