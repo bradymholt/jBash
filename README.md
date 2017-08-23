@@ -42,7 +42,7 @@ When you run `./myscript.js`, it will output `Hello World`.
 
 ## Command Execution
 
-To run commands in jBash you can use either the **$()** (``$(`command`)``) or **eval()** helper, depending upon whether you need to capture the output of the commands.  **Both command helpers will throw an exception if the command returns an exit code <> 0**;  The error will have a `data` property with the detail (`{ status, stderr}`).
+To run commands in jBash you can use either the **$()** or **eval()** helper, depending upon whether you need to capture the output of the commands.  **Both command helpers will throw an exception if the command returns an exit code <> 0**;  The error will have a `data` property with the detail (`{ status, stderr}`).
 
 Examples:
 
