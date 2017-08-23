@@ -1,11 +1,13 @@
 // jbash
 
 // Aliases
-args = process.argv.slice(global.shebangInvoked ? 3 : 2);
+args = process.argv.slice(global.shebangInvoked ? 3 : 2); global[`$@`] = args;
+for (let i=0;i<args.length;i++) { global[`$${i+1}`]=args[i] }
 cd = process.chdir;
 echo = console.log;
 exit = process.exit;
 env = process.env;
+for (let p in env) { global[`$${p}`]=env[p] }
 
 // File access
 let fs = require("fs");

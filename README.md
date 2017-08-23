@@ -28,15 +28,18 @@ When you run `./myscript.js`, it will output `Hello World`.
 | Bash                      | jBash                            | notes                                   |
 |---------------------------|----------------------------------|-----------------------------------------|
 | ``echo "Hello"``              | ``echo(`Hello`)``                   | print text to console |
-| ``$1, $2, ...``               | ``args``                             | args is an array of arguments passed in |
-| ``$HOME``                     | ``env.HOME``                         | environment variables |
+| ``$1, $2, ...``               | ``$1; $2; ...``                     | $1, $2, etc. variables contain args passed in |
+|                               | ``$@``                     | $@ is an array of all arguments passed in |
+|                               | ``args``                     | args is alias for $@ |
+| ``$HOME``                     | ``$HOME``                         | environment variables |
+|                               | ``env.HOME``                         | alt: all env variables are mapped on env var  |
 | ``cd "/usr/bin"``             | ``cd(`/usr/bin`)``                   | change current working directory |
 | ``exit 1``                    | ``exit(1) ``                         | exit with code |
 | ``config=$(cat cnf.txt)``  | ``config=$(`cat cnf.txt`)``       | read text from file |
-|                           | ``config=readFile(`cnf.txt`)``    | alternative: readFile helper (defaults to UTF-8 but can pass encoding as 2nd parameter) |
+|                           | ``config=readFile(`cnf.txt`)``    | alt: readFile helper (defaults to UTF-8 but can pass encoding as 2nd parameter) |
 |                           |                                  |                                         |
 | ``echo $cnf > cnf.txt`` | ``$(`echo ${cnf} > cnf.txt`)`` | save text to file |
-|                           | ``writeFile(`cnf.txt` config)``   | alternative: writeFile helper (defaults to UTF-8 but can pass encoding as 2nd parameter) |
+|                           | ``writeFile(`cnf.txt` config)``   | alt: writeFile helper (defaults to UTF-8 but can pass encoding as 2nd parameter) |
 | ``result=$(cmd.sh)``      | ``result=$(`cmd.sh`)``          | $(...) buffers output as return value |
 | ``eval ping g.cn``  | ``eval(`ping g.cn`)``      | eval() streams output to console (no return value) |
 
