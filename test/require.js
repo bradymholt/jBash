@@ -9,7 +9,15 @@ require('../index.js');
 try {
 $(`cat invalid.txt`)
 } catch (e) {
-    console.log(e.data.status);
-    console.log(e.data.output);
-    console.log(e.data.stderr);
+    console.log(e.detail.status);
+    console.log(e.detail.output);
+    console.log(e.detail.stderr);
 }
+
+try {
+    eval(`nonExistingCommand.sh`)
+  } catch (err) {
+    console.log(err.message);
+    console.log(err.detail.status) // 1
+    console.log(err.detail.stderr) // "cat: invalid.txt: No such file or directory"
+  }

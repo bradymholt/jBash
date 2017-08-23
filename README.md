@@ -42,31 +42,16 @@ When you run `./myscript.js`, it will output `Hello World`.
 
 ## Command Execution
 
-To run commands in jBash you can use either the **$()** or **eval()** helper, depending upon whether you need to capture the output of the commands.  **Both command helpers will throw an exception if the command returns an exit code <> 0**.  This is consistent with using `set -e` in Bash.  The error will have a `detail` property as `{ status, stderr }`.
-
-Examples:
-
-```
-// Will wait for cat to read file and not print to console
-// but assign output result to `contents` variable
-let contents = $(`cat foo.txt`)
-
-// Will print ping output immediately as it happens
-eval(`ping -t 1 www.google.com`)
-
-try {
-  $(`cat invalid.txt`)
-} catch (err) {
-  console.log(err.detail.status) // 1
-  console.log(err.detail.stderr) // "cat: invalid.txt: No such file or directory"
-}
-```
+To run commands in jBash you can use either the **$()** or **eval()** helper, depending upon whether you need to capture the output of the commands.  Both of these commands are synchronous and will block execution until completion.
 
 ### $()
 
 When you want to run a command and buffer the output (stdout) of that command as a return vlaue, you'll want to use **$()**.  As the command is running, stdout will _not_ be printed to the console but will instead be captured and returned as the result.  This helper is intended for short running commands that do not produce a large amount of output.  Example: To grab the output of `git status --porcelain` and store in variable named `result`:
 
 ```
+// Will wait for `git status` to complete and assign
+// output to result variable.  Nothing will be
+// printed to the console.
 let result=$(`git status --porcelain`);
 ```
 
@@ -75,7 +60,31 @@ let result=$(`git status --porcelain`);
 **eval()** should be used for running commands where the output does not need to be captured, but only printed to the console.  This helper is intended for long running commands or those where output does not need to be captured.  Example: To run `npm install`:
 
 ```
+// Will print `npm install` output immediately as it happens
+// eval() will return null
 eval(`npm install`)
+```
+
+### Error Handling
+
+ **Both command helpers will throw an exception if the command returns an exit code <> 0**.  This is consistent with using `set -e` in Bash.  The error will have a `detail` property as `{ status, stderr }`.
+
+Example:
+
+```
+try {
+  $(`cat invalid.txt`)
+} catch (err) {
+  console.log(err.detail.status) // 1
+  console.log(err.detail.stderr) // "cat: invalid.txt: No such file or directory"
+}
+
+try {
+  $(`cat invalid.txt`)
+} catch (err) {
+  console.log(err.detail.status) // 1
+  console.log(err.detail.stderr) // "nonExistingCommand.sh: command not found"
+}
 ```
 
 ## Installation
@@ -114,6 +123,10 @@ require('./jbash.js)
 
 echo(`Hello World`)
 ```
+
+## It's Still JavaScript
+
+When you write your shell scripts in jBash, you get to use a simple Bash like syntax but remember, it's still JavaScript!  This means you can install npm packages and use then to your heart's content.
 
 ## Examples
 

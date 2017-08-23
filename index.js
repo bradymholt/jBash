@@ -23,7 +23,7 @@ $ = (cmd, stream) => {
     shell: true
   });
   if (result.status != 0) {
-    let stderr = result.stderr ? result.stderr.toString() : null;
+    let stderr = result.stderr ? result.stderr.toString().replace("/bin/sh: ", "") : null;
     err = new Error(stderr || `Error running: ${cmd}`);
     err.detail = {
       status: result.status,
