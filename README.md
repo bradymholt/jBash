@@ -29,8 +29,7 @@ When you run `./myscript.js`, it will output `Hello World`.
 |---------------------------|----------------------------------|-----------------------------------------|
 | ``echo "Hello"``              | ``echo(`Hello`)``                   | print text to console |
 | ``$1, $2, ...``               | ``$1; $2; ...``                     | $1, $2, etc. variables contain args passed in |
-|                               | ``$@``                     | $@ is an array of all arguments passed in |
-|                               | ``args``                     | args is alias for $@ |
+|                               | ``args``                     | an array of all arguments passed in |
 | ``$HOME``                     | ``$HOME``                         | environment variables |
 |                               | ``env.HOME``                         | alt: all env variables are mapped on env var  |
 | ``cd "/usr/bin"``             | ``cd(`/usr/bin`)``                   | change current working directory |
