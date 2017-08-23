@@ -55,6 +55,7 @@ When you want to run a command and buffer the output (stdout) of that command as
 // Will wait for `git status` to complete and assign
 // output to result variable.  Nothing will be
 // printed to the console.
+
 let result=$(`git status --porcelain`);
 ```
 
@@ -65,12 +66,13 @@ let result=$(`git status --porcelain`);
 ```
 // Will print `npm install` output immediately as it happens
 // eval() will return null
+
 eval(`npm install`)
 ```
 
 ### Error Handling
 
- **Both command helpers will throw an exception if the command returns an exit code <> 0**.  This is consistent with using `set -e` in Bash.  The error will have a `detail` property as `{ status, stderr }`.
+ **Both command helpers will throw an error if the command returns an exit code <> 0**.  This is consistent with using `set -e` in Bash.  The error will have a `detail` property as `{ status, stderr }`.
 
 Example:
 
