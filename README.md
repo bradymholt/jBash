@@ -54,7 +54,7 @@ let contents = $(`cat foo.txt`)
 eval(`ping -t 1 www.google.com`)
 
 try {
-  $(`invalidCommand.sh`)
+  $(`cat invalid.txt`)
 } catch (err) {
   console.log(err.data.status) // 1
   console.log(err.stderr) // "cat: invalid.txt: No such file or directory"
