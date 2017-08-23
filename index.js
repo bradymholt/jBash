@@ -23,12 +23,11 @@ $ = (cmd, stream) => {
     shell: true
   });
   if (result.status != 0) {
-    err = new Error(
-      result.stderr ? result.stderr.toString() : `Error running: ${cmd}`
-    );
-    err.data = {
+    let stderr = result.stderr ? result.stderr.toString() : null;
+    err = new Error(stderr || `Error running: ${cmd}`);
+    err.detail = {
       status: result.status,
-      stderr: result.stderr ? result.stderr.toString() : null,
+      stderr: stderr,
       output: result.output
     };
     throw err;

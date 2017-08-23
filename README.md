@@ -32,22 +32,23 @@ When you run `./myscript.js`, it will output `Hello World`.
 | ``$HOME``                     | ``env.HOME``                         | environment variables |
 | ``cd "/usr/bin"``             | ``cd(`/usr/bin`)``                   | change current working directory |
 | ``exit 1``                    | ``exit(1) ``                         | exit with code |
-| ``config=$(cat config.txt)``  | ``config=$(`cat config.txt`)``       | read text from file |
-|                           | ``config=readFile(`config.txt`)``    | alternative: readFile helper |
+| ``config=$(cat cnf.txt)``  | ``config=$(`cat cnf.txt`)``       | read text from file |
+|                           | ``config=readFile(`cnf.txt`)``    | alternative: readFile helper (defaults to UTF-8 but can pass encoding as 2nd parameter) |
 |                           |                                  |                                         |
-| ``echo $config > config.txt`` | ``$(`echo ${config} > config.txt`)`` | save text to file |
-|                           | ``writeFile(`config.txt` config)``   | alternative: writeFile helper |
-| ``result=$(command.sh)``      | ``result=$(`command.sh`)``          | $(...) buffers output as return value |
-| ``eval ping www.google.com``  | ``eval(`ping www.google.com`)``      | eval() streams output (no return value) |
+| ``echo $cnf > cnf.txt`` | ``$(`echo ${cnf} > cnf.txt`)`` | save text to file |
+|                           | ``writeFile(`cnf.txt` config)``   | alternative: writeFile helper (defaults to UTF-8 but can pass encoding as 2nd parameter) |
+| ``result=$(cmd.sh)``      | ``result=$(`cmd.sh`)``          | $(...) buffers output as return value |
+| ``eval ping g.cn``  | ``eval(`ping g.cn`)``      | eval() streams output to console (no return value) |
 
 ## Command Execution
 
-To run commands in jBash you can use either the **$()** or **eval()** helper, depending upon whether you need to capture the output of the commands.  **Both command helpers will throw an exception if the command returns an exit code <> 0**;  The error will have a `data` property with the detail as `{ status, stderr }`.
+To run commands in jBash you can use either the **$()** or **eval()** helper, depending upon whether you need to capture the output of the commands.  **Both command helpers will throw an exception if the command returns an exit code <> 0**.  This is consistent with using `set -e` in Bash.  The error will have a `detail` property as `{ status, stderr }`.
 
 Examples:
 
 ```
-// Will wait for cat to read file and not print to console but assign output result to `contents` variable
+// Will wait for cat to read file and not print to console
+// but assign output result to `contents` variable
 let contents = $(`cat foo.txt`)
 
 // Will print ping output immediately as it happens
@@ -56,8 +57,8 @@ eval(`ping -t 1 www.google.com`)
 try {
   $(`cat invalid.txt`)
 } catch (err) {
-  console.log(err.data.status) // 1
-  console.log(err.stderr) // "cat: invalid.txt: No such file or directory"
+  console.log(err.detail.status) // 1
+  console.log(err.detail.stderr) // "cat: invalid.txt: No such file or directory"
 }
 ```
 
@@ -66,7 +67,7 @@ try {
 When you want to run a command and buffer the output (stdout) of that command as a return vlaue, you'll want to use **$()**.  As the command is running, stdout will _not_ be printed to the console but will instead be captured and returned as the result.  This helper is intended for short running commands that do not produce a large amount of output.  Example: To grab the output of `git status --porcelain` and store in variable named `result`:
 
 ```
-result=$(`git status --porcelain`);
+let result=$(`git status --porcelain`);
 ```
 
 ### eval()
