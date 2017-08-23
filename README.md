@@ -27,18 +27,55 @@ When you run `./myscript.js`, it will output `Hello World`.
 
 | Bash                      | jBash                            | notes                                   |
 |---------------------------|----------------------------------|-----------------------------------------|
-| ``echo "Hello"``              | ``echo(`Hello`)``                   |                                         |
+| ``echo "Hello"``              | ``echo(`Hello`)``                   | print text to console |
 | ``$1, $2, ...``               | ``args``                             | args is an array of arguments passed in |
-| ``$HOME``                     | ``env.HOME``                         |                                         |
-| ``cd "/usr/bin"``             | ``cd(`/usr/bin`)``                   |                                         |
-| ``exit 1``                    | ``exit(1) ``                         |                                         |
-| ``config=$(cat config.txt)``  | ``config=$(`cat config.txt`)``       |                                         |
-|                           | ``config=readFile(`config.txt`)``    | alternative: readFile helper            |
+| ``$HOME``                     | ``env.HOME``                         | environment variables |
+| ``cd "/usr/bin"``             | ``cd(`/usr/bin`)``                   | change current working directory |
+| ``exit 1``                    | ``exit(1) ``                         | exit with code |
+| ``config=$(cat config.txt)``  | ``config=$(`cat config.txt`)``       | read text from file |
+|                           | ``config=readFile(`config.txt`)``    | alternative: readFile helper |
 |                           |                                  |                                         |
-| ``echo $config > config.txt`` | ``$(`echo ${config} > config.txt`)`` |                                         |
-|                           | ``writeFile(`config.txt` config)``   | alternative: writeFile helper           |
-| ``result=$(command.sh)``      | ``result=$(`command.sh`)``          | $(...) buffers output                   |
-| ``eval ping www.google.com``  | ``eval(`ping www.google.com`)``      | eval() streams output                   |
+| ``echo $config > config.txt`` | ``$(`echo ${config} > config.txt`)`` | save text to file |
+|                           | ``writeFile(`config.txt` config)``   | alternative: writeFile helper |
+| ``result=$(command.sh)``      | ``result=$(`command.sh`)``          | $(...) buffers output as return value |
+| ``eval ping www.google.com``  | ``eval(`ping www.google.com`)``      | eval() streams output (no return value) |
+
+## Command Execution
+
+To run commands in jBash you can use either the **$()** (``$(`command`)``) or **eval()** helper, depending upon whether you need to capture the output of the commands.  **Both command helpers will throw an exception if the command returns an exit code <> 0**;  The error will have a `data` property with the detail (`{ status, stderr}`).
+
+Examples:
+
+```
+// Will wait for cat to read file and not print to console but assign output result to `contents` variable
+let contents = $(`cat foo.txt`)
+
+// Will print ping output immediately as it happens
+eval(`ping -t 1 www.google.com`)
+
+try {
+  $(`invalidCommand.sh`)
+} catch (err) {
+  console.log(err.data.status) // 1
+  console.log(err.stderr) // "cat: invalid.txt: No such file or directory"
+}
+```
+
+### $()
+
+When you want to run a command and buffer the output (stdout) of that command as a return vlaue, you'll want to use **$()**.  As the command is running, stdout will _not_ be printed to the console but will instead be captured and returned as the result.  This helper is intended for short running commands that do not produce a large amount of output.  Example: To grab the output of `git status --porcelain` and store in variable named `result`:
+
+```
+result=$(`git status --porcelain`);
+```
+
+### eval()
+
+**eval()** should be used for running commands where the output does not need to be captured, but only printed to the console.  This helper is intended for long running commands or those where output does not need to be captured.  Exmaple: To run `npm install`:
+
+```
+eval(`npm install`)
+```
 
 ## Installation
 
