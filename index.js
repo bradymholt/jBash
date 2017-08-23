@@ -32,12 +32,14 @@ $ = (cmd, stream) => {
     let stderr = result.stderr
       ? result.stderr.toString().replace("/bin/sh: ", "")
       : null;
-    err = new Error(stderr || `Error running: ${cmd}`);
+    let msg = stderr || `Error running: ${cmd}`;
+    err = new Error(msg);
     err.detail = {
       status: result.status,
       stderr: stderr,
       output: result.output
     };
+    echo(msg);
     throw err;
   }
   return !!result.stdout ? result.stdout.toString().replace(/^\n$/, "") : null;
