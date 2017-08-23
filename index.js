@@ -2,12 +2,16 @@
 
 // Aliases
 args = process.argv.slice(global.shebangInvoked ? 3 : 2);
-for (let i=0;i<args.length;i++) { global[`$${i+1}`]=args[i] }
+for (let i = 0; i <= args.length; i++) {
+  global[`$${i}`] = (i==0) ? __filename : args[i - 1];
+}
 cd = process.chdir;
 echo = console.log;
 exit = process.exit;
 env = process.env;
-for (let p in env) { global[`$${p}`]=env[p] }
+for (let p in env) {
+  global[`$${p}`] = env[p];
+}
 
 // File access
 let fs = require("fs");
@@ -25,7 +29,9 @@ $ = (cmd, stream) => {
     shell: true
   });
   if (result.status != 0) {
-    let stderr = result.stderr ? result.stderr.toString().replace("/bin/sh: ", "") : null;
+    let stderr = result.stderr
+      ? result.stderr.toString().replace("/bin/sh: ", "")
+      : null;
     err = new Error(stderr || `Error running: ${cmd}`);
     err.detail = {
       status: result.status,

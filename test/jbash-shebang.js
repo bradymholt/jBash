@@ -6,4 +6,4 @@ echo(`Hello`)
 //echo(args)
 //$1 = "dsd";
 echo(args);
-echo(global['$@']);
+echo($0);
