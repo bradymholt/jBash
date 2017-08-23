@@ -80,7 +80,7 @@ try {
 }
 
 try {
-  $(`cat invalid.txt`)
+  eval(`cat invalid.txt`)
 } catch (err) {
   console.log(err.detail.status) // 1
   console.log(err.detail.stderr) // "nonExistingCommand.sh: command not found"
