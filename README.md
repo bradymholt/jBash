@@ -131,7 +131,7 @@ echo(`Hello World`)
 
 ## It's Still JavaScript
 
-When you write your shell scripts in jBash, you get to use a simple Bash like syntax but remember, it's still JavaScript!  This means you can install npm packages and use them to your heart's content.
+When you write your shell scripts in jBash, you get to use a simple Bash like syntax but remember, it's still JavaScript!  This means you can install npm packages and use them to your ❤️'s content.
 
 Example:
 
