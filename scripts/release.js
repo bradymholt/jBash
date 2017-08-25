@@ -16,4 +16,4 @@ eval(`git tag ${package.version}`)
 eval(`git push --tags`)
 
 // Publish
-//eval(`npm publish`)
+eval(`npm publish`)
