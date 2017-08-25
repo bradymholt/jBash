@@ -1,5 +1,7 @@
 #!bin/jbash-local.js
 
+set("-e")
+
 let sourceFile = "index.js";
 let minifiedFileName = "index.min.js";
 let package = require("../package.json")

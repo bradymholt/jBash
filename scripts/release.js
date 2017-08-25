@@ -1,5 +1,7 @@
 #!bin/jbash-local.js
 
+set("-e")
+
 cd(`${__dirname}/../`)
 
 // Bump version
