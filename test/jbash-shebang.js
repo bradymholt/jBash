@@ -1,4 +1,4 @@
-#!bin/jbash.js
+#!bin/jbash-local.js
 
 echo(`Hello`)
 // let f = $(`ping -t 1 www.google.com`);
