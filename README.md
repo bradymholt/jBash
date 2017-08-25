@@ -34,9 +34,9 @@ When you run `./myscript.js`, it will output `Hello World`.
 | ``$HOME``                     | ``$HOME``                   | environment variables |
 |                               | ``env.HOME``                | all env variables are mapped on env var  |
 | ``set -x``                    | ``set("-x")``               | echos all commands  |
-| ``set -x``                    | ``options.xtrace=true``     |   |
+|                               | ``options.xtrace=true``     |   |
 | ``set -e``                    | ``set("-e")``               | throw when a command exits with non-zero status |
-| ``set -e``                    | ``options.errexit=true``    |  |
+|                               | ``options.errexit=true``    |  |
 | ``cd "/usr/bin"``             | ``cd("/usr/bin")``          | change current working directory |
 | ``exit 1``                    | ``exit(1) ``                | exit with code |
 | ``config=$(cat cnf.txt)``  | ``config=$(`cat cnf.txt`)``    | read text from file |
