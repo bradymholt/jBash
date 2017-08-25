@@ -82,7 +82,7 @@ Example:
 // This command will error but will not throw because errexit is not enabled
 // The string "cat: invalid.txt: No such file or directory" will be returned and
 // assigned to `content`.
-let content=$(`cat invalid.txt`);
+let content=$(`cat invalid.txt`)
 
 // Turn on errexit
 set("-e")
