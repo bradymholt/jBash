@@ -36,10 +36,10 @@ When you run `./myscript.js`, it will output `Hello World`.
 | ``cd "/usr/bin"``             | ``cd(`/usr/bin`)``                   | change current working directory |
 | ``exit 1``                    | ``exit(1) ``                         | exit with code |
 | ``config=$(cat cnf.txt)``  | ``config=$(`cat cnf.txt`)``       | read text from file |
-|                           | ``config=readFile(`cnf.txt`)``    | readFile helper (defaults to UTF-8 but can pass encoding as 2nd parameter) |
+|                           | ``config=readFile(`cnf.txt`)``    | readFile helper |
 |                           |                                  |                                         |
 | ``echo $cnf > cnf.txt`` | ``$(`echo ${cnf} > cnf.txt`)`` | save text to file |
-|                           | ``writeFile(`cnf.txt` config)``   | writeFile helper (defaults to UTF-8 but can pass encoding as 2nd parameter) |
+|                           | ``writeFile(`cnf.txt` config)``   | writeFile helper |
 | ``result=$(cmd.sh)``      | ``result=$(`cmd.sh`)``          | $(...) buffers output as return value |
 | ``eval ping g.cn``  | ``eval(`ping g.cn`)``      | eval() streams output to console (no return value) |
 
