@@ -1,2 +1,4 @@
 bin/jbash-local.js
+scripts/
+test/
 RELEASING.md
