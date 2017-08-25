@@ -150,4 +150,5 @@ echo(uuidv4()) // -> '110ec58a-a0f2-4ac4-8393-c866d813b8d1'
 
 Looking at real-world scripts is a good way to get a feel for the library.
 
-- [release.js](https://github.com/bradyholt/cron-expression-descriptor/blob/master/scripts/release.js) - Cron Expression Descriptor release script
+- [jBash build and release scripts](https://github.com/bradyholt/jBash/tree/master/scripts)
+- [Cron Expression Descriptor release script](https://github.com/bradyholt/cron-expression-descriptor/blob/master/scripts/release.js)
