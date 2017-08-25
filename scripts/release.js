@@ -8,7 +8,7 @@ cd(`${__dirname}/../`)
 eval(`npm version --no-git-tag-version minor`)
 
 // Build/minify
-eval(`./scripts/build.js`)
+eval(`./bin/jbash-local.js /scripts/build.js`)
 
 // Git commit/tag
 eval(`git commit -a -m "New version: ${package.version}"`)
