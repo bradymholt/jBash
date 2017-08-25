@@ -27,13 +27,15 @@ When you run `./myscript.js`, it will output `Hello World`.
 
 | Bash                      | jBash                            | notes                                   |
 |---------------------------|----------------------------------|-----------------------------------------|
-| ``echo "Hello"``              | ``echo(`Hello`)``                   | print text to console |
+| ``echo "Hello"``              | ``echo("Hello")``                   | print text to console |
 | ``$1, $2, ...``               | ``$1; $2; ...``                     | $1, $2, etc. variables contain args passed in |
 |                               | ``args``                     | an array of all arguments passed in |
 | ``$0``                        | ``$0``                     | file path of current script |
 | ``$HOME``                     | ``$HOME``                         | environment variables |
 |                               | ``env.HOME``                         | all env variables are mapped on env var  |
-| ``cd "/usr/bin"``             | ``cd(`/usr/bin`)``                   | change current working directory |
+| ``set -x``                    | ``set("-x")``                         | echos all commands  |
+| ``set -e``                    | ``set("-e")``                         | throw when a command exits with non-zero status |
+| ``cd "/usr/bin"``             | ``cd("/usr/bin")``                   | change current working directory |
 | ``exit 1``                    | ``exit(1) ``                         | exit with code |
 | ``config=$(cat cnf.txt)``  | ``config=$(`cat cnf.txt`)``       | read text from file |
 |                           | ``config=readFile(`cnf.txt`)``    | readFile helper |
@@ -72,23 +74,25 @@ eval(`npm install`)
 
 ### Error Handling
 
- **Both command helpers will throw an error if the command returns an exit code <> 0**.  This is consistent with using `set -e` in Bash.  The error will have a `detail` property as `{ status, stderr }`.
+If a command exits with a non-zero status, the stderr will be echoed on console.  If the command was run with `$()`, the stderr will also be returned.  To throw an error and therefore halt the script unless the error is handled with `try / catch`, you can enable errexit option by calling `set("-e")` which behaves just like `set -e` in Bash.  The error will have properties `{ message, status, stderr }` that contain detail of the error.
 
 Example:
 
 ```
-try {
-  $(`cat invalid.txt`)
-} catch (err) {
-  console.log(err.detail.status) // 1
-  console.log(err.detail.stderr) // "cat: invalid.txt: No such file or directory"
-}
+// This command will error but will not throw because errexit is not enabled
+// The string "cat: invalid.txt: No such file or directory" will be returned and
+// assigned to `content`.
+let content=$(`cat invalid.txt`);
+
+// Turn on errexit
+set("-e")
 
 try {
+  // This command will throw because errexit is enabled
   eval(`cat invalid.txt`)
 } catch (err) {
-  console.log(err.detail.status) // 1
-  console.log(err.detail.stderr) // "nonExistingCommand.sh: command not found"
+  console.log(err.status) // 1
+  console.log(err.stderr) // "cat: invalid.txt: No such file or directory"
 }
 ```
 
