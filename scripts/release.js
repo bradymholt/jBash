@@ -5,7 +5,7 @@ let package = require("../package.json")
 cd(`${__dirname}/../`)
 
 // Bump version
-eval(`npm --no-git-tag-version minor`)
+eval(`npm version --no-git-tag-version minor`)
 
 // Build/minify
 eval(`./scripts/build.js`)
