@@ -53,7 +53,7 @@ To run commands in jBash you can use either the **$()** or **eval()** helper, de
 
 ### $()
 
-When you want to run a command and buffer the output (stdout) of that command as a return vlaue, you'll want to use **$()**.  As the command is running, stdout will _not_ be printed to the console but will instead be captured and returned as the result.  This helper is intended for short running commands that do not produce a large amount of output.  Example: To grab the output of `git status --porcelain` and store in variable named `result`:
+When you want to run a command and buffer the output (stdout) of that command as a return value, you'll want to use **$()**.  As the command is running, stdout will _not_ be printed to the console but will instead be captured and returned as the result.  This helper is intended for short running commands that do not produce a large amount of output.  Example: To grab the output of `git status --porcelain` and store in variable named `result`:
 
 ```
 // Will wait for `git status` to complete and assign
