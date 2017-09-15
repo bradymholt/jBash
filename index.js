@@ -41,7 +41,7 @@ $ = (cmd, stream) => {
   }
 
   let result = require("child_process").spawnSync(cmd, [], {
-    stdio: [0, stream ? "inherit" : "pipe", "pipe"],
+    stdio: [0, stream ? "inherit" : "pipe", stream ? "inherit" : "pipe"],
     shell: true
   });
 
