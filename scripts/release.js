@@ -14,7 +14,7 @@ let sourceContent = readFile(sourceFile);
 // Remove first line from source
 sourceContent = sourceContent.split("\n").slice(1).join("\n");
 // Prefix it
-writeFile(sourceFile, `// ${package.name} - v${package.version}\n${sourceContentWithFirstLineRemoved}`)
+writeFile(sourceFile, `// ${package.name} - v${package.version}\n${sourceContent}`)
 
 // Git commit/tag
 eval(`git commit -a -m "New version: ${package.version}"`)
