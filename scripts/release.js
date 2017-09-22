@@ -7,11 +7,14 @@ cd(`${__dirname}/../`)
 // Bump version
 eval(`npm version --no-git-tag-version minor`)
 
+// Prefix source with jbash - v0.0.0
 let package = require("../package.json")
 let sourceFile = "index.js";
-
-// Prefix with jbash - v0.0.0
-writeFile(sourceFile, `// ${package.name} - v${package.version}\n${readFile(sourceFile)}`)
+let sourceContent = readFile(sourceFile);
+// Remove first line from source
+sourceContent = sourceContent.split("\n").slice(1).join("\n");
+// Prefix it
+writeFile(sourceFile, `// ${package.name} - v${package.version}\n${sourceContentWithFirstLineRemoved}`)
 
 // Git commit/tag
 eval(`git commit -a -m "New version: ${package.version}"`)
