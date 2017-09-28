@@ -21,9 +21,6 @@
     "url": "https://github.com/bradyholt/jbash/issues"
   },
   "homepage": "https://github.com/bradyholt/jbash#readme",
-  "devDependencies": {
-    "uglify-es": "^3.0.28"
-  },
   "scripts": {
     "release": "bin/jbash-local.js ./scripts/release.js"
   }
