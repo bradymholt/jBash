@@ -7,3 +7,4 @@ echo(`Hello`)
 //$1 = "dsd";
 echo(args);
 echo($0);
+exec(`node --version`);

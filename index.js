@@ -68,3 +68,4 @@ $ = (cmd, stream) => {
 eval = cmd => {
   return $(cmd, true);
 };
+exec = eval;
