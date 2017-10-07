@@ -26,27 +26,26 @@ When you run `./myscript.js`, it will output `Hello World`.
 ## Helpers
 
 | Bash                      | jBash                            | notes                                   |
-|---------------------------|----------------------------------|-----------------------------------------|
-| ``echo "Hello"``              | ``echo("Hello")``           | print text to console |
-| ``$1, $2, ...``               | ``$1; $2; ...``             | $1, $2, etc. variables contain args passed in |
-|                               | ``args``                    | an array of all arguments passed in |
-| ``$0``                        | ``$0``                      | file path of current script |
-| ``$HOME``                     | ``$HOME``                   | environment variables |
-|                               | ``env.HOME``                | all env variables are also mapped on env var  |
-| ``set -x``                    | ``set("-x")``               | echos all commands  |
-|                               | ``options.xtrace=true``     |   |
-| ``set -e``                    | ``set("-e")``               | throw when a command exits with non-zero status |
-|                               | ``options.errexit=true``    |  |
-| ``cd "/usr/bin"``             | ``cd("/usr/bin")``          | change current working directory |
-| ``exit 1``                    | ``exit(1) ``                | exit with code |
-| ``config=$(cat cnf.txt)``     | ``config=$(`cat cnf.txt`)``    | read text from file |
-|                               | ``config=readFile(`cnf.txt`)``  | readFile helper |
-|                               |                                 |                                         |
-| ``echo $cnf > cnf.txt``       | ``$(`echo ${cnf} > cnf.txt`)``    | save text to file |
-|                               | ``writeFile(`cnf.txt` config)`` | writeFile helper |
-| ``result=$(cmd.sh)``          | ``result=$(`cmd.sh`)``          | $(...) buffers output as return value |
-| ``eval ping g.cn``            | ``eval(`ping g.cn`)``      | eval() streams output to console (no return value) |
-|                               | ``exec(`ping g.cn`)``      | exec() is an alias for eval() |
+|---------------------------|--------------------------------------|-----------------------------------------|
+| ``echo "Hello"``              | ``echo("Hello")``                | print text to console |
+| ``$1, $2, ...``               | ``$1; $2; ...``                  | $1, $2, etc. variables contain args passed in |
+|                               | ``args[0], args[1]``             | arguments passed in are also in args array |
+| ``$0``                        | ``$0``                           | file path of current script |
+| ``$HOME``                     | ``$HOME``                        | environment variables |
+|                               | ``env.HOME``                     | all env variables are also mapped on env var  |
+| ``set -x``                    | ``set("-x")``                    | echos all commands  |
+|                               | ``options.xtrace=true``          | alternative to set("-x")  |
+| ``set -e``                    | ``set("-e")``                    | throw when a command exits with non-zero status |
+|                               | ``options.errexit=true``         | alternative to set("-x")  |
+| ``cd "/usr/bin"``             | ``cd("/usr/bin")``               | change current working directory |
+| ``exit 1``                    | ``exit(1)``                      | exit with code |
+| ``result=$(cmd.sh)``          | ``result=$(`cmd.sh`)``           | $(...) buffers output as return value |
+| ``eval ping g.cn``            | ``eval(`ping g.cn`)``            | eval() streams output to console (no return value) |
+|                               | ``exec(`ping g.cn`)``            | exec() is an alias for eval() |
+| ``config=$(cat cnf.txt)``     | ``config=$(`cat cnf.txt`)``      | read text from file |
+|                               | ``config=readFile(`cnf.txt`)``   | readFile reads file to text |
+| ``echo $cnf > cnf.txt``       | ``$(`echo ${cnf} > cnf.txt`)``   | save text to file |
+|                               | ``writeFile(`cnf.txt`, cnf)``    | writeFile saves text to file |
 
 ## Command Execution
 
@@ -74,6 +73,18 @@ let result=$(`git status --porcelain`);
 
 eval(`npm install`)
 ```
+
+### Reading and Writing Files
+
+In Bash, reading files is usually done with the `cat` command (i.e. `config=$(cat cnf.txt)`) and writing to files is usally done with `cat` or `echo` and piping (i.e. `echo $cnf > cnf.txt`).  The same approaches can be used in jBash, using `$()` (reading: ``config=$(`cat cnf.txt`)``; writing: ``$(`echo ${cnf} > cnf.txt`)``).  But jBash also provides a `readFile` and `writeFile` helper for convenience.
+
+Example
+
+<pre>
+config=readFile(`cnf.txt`)
+writeFile(`cnf.txt`, cnf)
+</pre>
+
 
 ### Error Handling
 
