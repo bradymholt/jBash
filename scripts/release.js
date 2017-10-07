@@ -10,7 +10,7 @@ eval(`npm version --no-git-tag-version minor`)
 // Prefix source with jbash - v0.0.0
 let package = require("../package.json")
 let sourceFile = "index.js";
-let sourceContent = readFile(sourceFile);
+let sourceContent = readFile(sourceFile)
 // Remove first line from source
 sourceContent = sourceContent.split("\n").slice(1).join("\n");
 // Prefix it
