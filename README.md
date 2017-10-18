@@ -132,7 +132,7 @@ echo(`Hello World`)
 
 Rather than installing jBash globally, you can simply download it to a local folder and reference it directly from your script using a `require` statement.  This is a good option for scripts running on a remote system where you may not be able to install npm packages globally.  Node.js will still need to be available, though.
 
-First, download the minified version of jBash:
+First, download jBash:
 
 ```
 wget -O jbash.js https://raw.githubusercontent.com/bradyholt/jbash/master/index.js
