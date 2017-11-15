@@ -63,7 +63,7 @@ $ = (cmd, stream) => {
 
     return !stream ? msg : null;
   }
-  return !!result.stdout ? result.stdout.toString().replace(/^\n$/, "") : null;
+  return !!result.stdout ? result.stdout.toString().replace(/^\n|\n$/g, "") : null;
 };
 eval = cmd => {
   return $(cmd, true);
