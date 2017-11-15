@@ -1,4 +1,4 @@
-// jbash - v1.34.0
+// jbash - v1.35.0
 
 options = { errexit: false, xtrace: false };
 set = opt => {
