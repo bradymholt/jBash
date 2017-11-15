@@ -22,6 +22,10 @@
   },
   "homepage": "https://github.com/bradyholt/jbash#readme",
   "scripts": {
+    "test": "npx mocha",
     "release": "bin/jbash-local.js ./scripts/release.js"
+  },
+  "devDependencies": {
+    "mocha": "^4.0.1"
   }
 }
