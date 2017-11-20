@@ -15,12 +15,17 @@ set = opt => {
 // Aliases
 args = process.argv.slice(global.shebangInvoked ? 3 : 2);
 for (let i = 0; i <= args.length; i++) {
+  if (i==0){
+    global[`$0`] = process.argv[1];
+  } else {
   global[`$${i}`] = i == 0 ? __filename : args[i - 1];
+  }
 }
 cd = process.chdir;
 echo = console.log;
 exit = process.exit;
 env = process.env;
+// Environmental variables prefixed with $
 for (let p in env) {
   global[`$${p}`] = env[p];
 }
