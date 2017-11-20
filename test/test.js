@@ -29,9 +29,9 @@ describe("$()", function() {
 
 describe("eval", function() {
   it ("should run a command and stream output", function(){
-    const file = "/tmp/pingOutput.txt"
-    assert.equal(null,eval(`ping www.github.com -c 1 > ${file}`))
-    assert.equal(true, readFile(file).startsWith("PING github.com"));
+    const [file, text] = ["/tmp/evalTest.txt", "hello there"];
+    assert.equal(null,eval(`echo '${text}' > ${file}`))
+    assert.equal(true, readFile(file).startsWith(text));
   });
 });
 
