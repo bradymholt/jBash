@@ -2,7 +2,7 @@
 
 Helpers for Bash like shell scripting in JavaScript
 
-[![Build Status](https://travis-ci.org/bradyholt/jBash.svg?branch=master)](https://travis-ci.org/bradyholt/jBash) [![NPM Package](https://img.shields.io/npm/v/jbash.svg)](https://www.npmjs.com/package/jbash)
+[![Build Status](https://travis-ci.org/bradymholt/jBash.svg?branch=master)](https://travis-ci.org/bradyholt/jBash) [![NPM Package](https://img.shields.io/npm/v/jbash.svg)](https://www.npmjs.com/package/jbash)
 
 
 Write your shell scripts using jBash and you get the best of both worlds: JavaScript and Bash.  jBash is a small JavaScript library that provides helper aliases and functions that are similar to Bash syntax, allowing you to write shell scripts in JavaScript that are simple and familiar.
