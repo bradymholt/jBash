@@ -9,20 +9,22 @@ Write your shell scripts using jBash and you get the best of both worlds: JavaSc
 
 ## Quick Start
 
-```
-npm i -g jbash
-touch myscript.js && chmod +x myscript.js
-```
-
-Then, in `myscript.js`:
+Create a file called script.js:
 
 ```
-#!/usr/local/bin/jbash
+#!/usr/bin/env npx jbash
 
-echo(`Hello world`)
+echo("Hello jBash")
 ```
 
-When you run `./myscript.js`, it will output `Hello World`.
+Make the file executable, run it, and you should see "Hello jBash" printed:
+
+```
+chmod +x script.js
+./script.js
+
+> Hello jBash
+```
 
 ## Helpers
 
@@ -113,25 +115,36 @@ try {
 
 ## Installation
 
-### Global
+### npx
 
-First, install jBash globally with npm:
+By far the easiest way to use jBash is with a [npx](https://github.com/zkat/npx) [shebang](https://en.wikipedia.org/wiki/Shebang_(Unix)) which will allow your script to be executed directly without an npm install needed.
 
 ```
-npm i -g jbash
+#!/usr/bin/env npx jbash
+
+echo("Hello jBash")
 ```
 
-Once it is installed globally, you can write your script with a jbash [shebang](https://en.wikipedia.org/wiki/Shebang_(Unix)) which will allow your script to be executed directly, with jBash loaded at runtime.
+
+### npm global install
+
+If you don't want to use npx, you can install jBash globally with npm:
+
+```
+npm install -g jbash
+```
+
+Once it is installed globally, you can write your script with a jBash [shebang](https://en.wikipedia.org/wiki/Shebang_(Unix)) which will allow your script to be executed directly, with the globally installed jBash loaded at runtime.
 
 ```
 #!/usr/local/bin/jbash
 
-echo(`Hello World`)
+echo(`Hello jBash`)
 ```
 
 ### require
 
-Rather than installing jBash globally, you can simply download it to a local folder and reference it directly from your script using a `require` statement.  This is a good option for scripts running on a remote system where you may not be able to install npm packages globally.  Node.js will still need to be available, though.
+Rather than installing jBash globally, you can simply download it to a local folder and reference it directly from your script using a `require` statement.  This is a good option for scripts running on a remote system where you may not have the ability to use npx or be able to install npm packages globally.  Node.js will still need to be available, though.
 
 First, download jBash:
 
@@ -145,7 +158,7 @@ Then, in your script:
 #!/usr/bin/env node
 require('./jbash.js)
 
-echo(`Hello World`)
+echo(`Hello jBash`)
 ```
 
 ## It's Still JavaScript
