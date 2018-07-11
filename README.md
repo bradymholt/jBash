@@ -31,9 +31,9 @@ chmod +x script.js
 | Bash                      | jBash                            | notes                                   |
 |---------------------------|--------------------------------------|-----------------------------------------|
 | ``echo "Hello"``              | ``echo("Hello")``                | print text to console |
+| ``$0``                        | ``$0``                           | file path of current script |
 | ``$1, $2, ...``               | ``$1; $2; ...``                  | $1, $2, etc. variables contain args passed in |
 |                               | ``args[0], args[1]``             | arguments passed in are also in args array |
-| ``$0``                        | ``$0``                           | file path of current script |
 | ``$HOME``                     | ``$HOME``                        | environment variables |
 |                               | ``env.HOME``                     | all env variables are also mapped on env var  |
 | ``set -x``                    | ``set("-x")``                    | echos all commands  |

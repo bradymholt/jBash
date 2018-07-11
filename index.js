@@ -14,11 +14,15 @@ set = opt => {
 
 // Aliases
 args = process.argv.slice(global.shebangInvoked ? 3 : 2);
-for (let i = 0; i <= args.length; i++) {
-  if (i==0){
-    global[`$0`] = process.argv[1];
+// Current filename aliased as $0
+global[`$0`] = process.argv[1];
+// Arguments aliased as $1, $2, etc.
+// $1 through $10, at a minimum, will be declared and have argument value or be set to undefined if not specified
+for (let i = 1; i <= Math.max(10, args.length); i++) {
+  if (args.length >= i) {
+    global[`$${i}`] = args[i - 1];
   } else {
-  global[`$${i}`] = i == 0 ? __filename : args[i - 1];
+    global[`$${i}`] = undefined;
   }
 }
 cd = process.chdir;
@@ -68,7 +72,9 @@ $ = (cmd, stream) => {
 
     return !stream ? msg : null;
   }
-  return !!result.stdout ? result.stdout.toString().replace(/^\n|\n$/g, "") : null;
+  return !!result.stdout
+    ? result.stdout.toString().replace(/^\n|\n$/g, "")
+    : null;
 };
 eval = cmd => {
   return $(cmd, true);
