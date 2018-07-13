@@ -1,19 +1,21 @@
 // jbash - v1.42.0
 
-options = { errexit: false, xtrace: false };
-set = opt => {
-  if (!opt.match(/^(-|\+)/)) throw new Error("Invalid set value");
+global.options = { errexit: false, xtrace: false };
+global.set = opt => {
+  if (!opt.match(/^(-|\+)/)) {
+    throw new Error("Invalid set value");
+  }
   let val = opt[0] == "-";
   switch (opt[1]) {
     case "x":
-      options.xtrace = val;
+      global.options.xtrace = val;
     case "e":
-      options.errexit = val;
+      global.options.errexit = val;
   }
 };
 
 // Aliases
-args = process.argv.slice(global.shebangInvoked ? 3 : 2);
+global.args = process.argv.slice(global.shebangInvoked ? 3 : 2);
 // Current filename aliased as $0
 global[`$0`] = process.argv[1];
 // Arguments aliased as $1, $2, etc.
@@ -25,10 +27,10 @@ for (let i = 1; i <= Math.max(10, args.length); i++) {
     global[`$${i}`] = undefined;
   }
 }
-cd = process.chdir;
-echo = console.log;
-exit = process.exit;
-env = process.env;
+global.cd = process.chdir;
+global.echo = console.log;
+global.exit = process.exit;
+global.env = process.env;
 // Environmental variables prefixed with $
 for (let p in env) {
   global[`$${p}`] = env[p];
@@ -36,17 +38,17 @@ for (let p in env) {
 
 // File access
 let fs = require("fs");
-readFile = (path, encoding = "utf-8") => {
+global.readFile = (path, encoding = "utf-8") => {
   return fs.readFileSync(path, { encoding });
 };
-writeFile = (path, contents, encoding = "utf-8") => {
+global.writeFile = (path, contents, encoding = "utf-8") => {
   fs.writeFileSync(path, contents, { encoding });
 };
 
 // Command execution
-$ = (cmd, stream) => {
-  if (options.xtrace) {
-    echo(cmd);
+global["$"] = (cmd, stream) => {
+  if (global["options"].xtrace) {
+    global.echo(cmd);
   }
 
   let result = require("child_process").spawnSync(cmd, [], {
@@ -60,9 +62,9 @@ $ = (cmd, stream) => {
       : null;
     let msg = stderr || `Error running: ${cmd}`;
 
-    echo(msg);
+    global.echo(msg);
 
-    if (options.errexit) {
+    if (global["options"].errexit) {
       err = new Error(msg);
       err.status = result.status;
       err.stderr = stderr;
@@ -76,7 +78,7 @@ $ = (cmd, stream) => {
     ? result.stdout.toString().replace(/^\n|\n$/g, "")
     : null;
 };
-eval = cmd => {
+global.eval = cmd => {
   return $(cmd, true);
 };
-exec = eval;
+global.exec = eval;
