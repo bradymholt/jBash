@@ -20,6 +20,6 @@ declare function set(opt:"+x"|"-x"|"+e"|"-e"): void;
 declare function readFile(path:string, encoding?:string) : void;
 declare function writeFile(path:string, contents:string, encoding?:string): void;
 
-// Can't redeclare eval here because it's already reserved
-declare function $(cmd: string, stream?: boolean): void;
-declare const exec : typeof $;
+declare function $(cmd: string): string;
+declare function exec(cmd: string): null;
+declare const eval : typeof exec;
