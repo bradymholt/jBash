@@ -1,4 +1,4 @@
-// jbash - v1.43.0
+// jbash - v1.44.0
 
 global.options = { errexit: false, xtrace: false };
 global.set = opt => {
