@@ -4,8 +4,6 @@ declare const exit : typeof process.exit;
 declare const env : typeof process.env;
 
 declare const args : string[];
-// This is somewhat misleading: jbash only creates these if they exist, so referencing a non-existant one will
-// actually cause a crash...
 declare const $0 : string;
 declare const $1 : string;
 declare const $2 : string;
