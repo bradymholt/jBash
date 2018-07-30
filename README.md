@@ -119,8 +119,20 @@ try {
 
 By far the easiest way to use jBash is with a [npx](https://github.com/zkat/npx) [shebang](https://en.wikipedia.org/wiki/Shebang_(Unix)) which will allow your script to be executed directly without an npm install needed.
 
+#### macOS
+
 ```
 #!/usr/bin/env npx jbash
+
+echo("Hello jBash")
+```
+
+#### Linux
+
+Since Linux does not support multiple arguments in the shebang, you need to call npx at its absolute path.  Usually npx is installed in `/usr/local/bin/` but you can run `which npx` to find out.
+
+```
+#!/usr/local/bin/npx jbash
 
 echo("Hello jBash")
 ```
