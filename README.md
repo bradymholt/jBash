@@ -30,7 +30,7 @@ chmod +x script.js
 
 | Bash                      | jBash                            | notes                                   |
 |---------------------------|--------------------------------------|-----------------------------------------|
-| ``echo "Hello"``              | ``echo("Hello")``                | print text to console |
+| ``echo "Hello"``              | ``echo("Hello")``                | print text to console (stdout) |
 | ``$0``                        | ``$0``                           | file path of current script |
 | ``$1, $2, ...``               | ``$1; $2; ...``                  | $1, $2, etc. variables contain args passed in |
 |                               | ``args[0], args[1]``             | arguments passed in are also in args array |
@@ -42,13 +42,11 @@ chmod +x script.js
 |                               | ``options.errexit=true``         | alternative to set("-x")  |
 | ``cd "/usr/bin"``             | ``cd("/usr/bin")``               | change current working directory |
 | ``exit 1``                    | ``exit(1)``                      | exit with code |
-| ``result=$(cmd.sh)``          | ``result=$(`cmd.sh`)``           | $(...) buffers output as return value |
-| ``eval ping g.cn``            | ``eval(`ping g.cn`)``            | eval() streams output to console (no return value) |
-|                               | ``exec(`ping g.cn`)``            | exec() is an alias for eval() |
-| ``config=$(cat cnf.txt)``     | ``config=$(`cat cnf.txt`)``      | read text from file |
-|                               | ``config=readFile(`cnf.txt`)``   | readFile reads file to text |
-| ``echo $cnf > cnf.txt``       | ``$(`echo ${cnf} > cnf.txt`)``   | save text to file |
-|                               | ``writeFile(`cnf.txt`, cnf)``    | writeFile saves text to file |
+| ``result=$(cmd.sh)``          | ``result=$("cmd.sh")``           | $(...) buffers output as return value |
+| ``eval ping g.cn``            | ``eval("ping g.cn")``            | eval() streams output to console (stdout) |
+|                               | ``exec("ping g.cn")``            | exec() is an alias for eval() |
+| ``config=$(cat cnf.txt)``     | ``config=cat("cnf.txt")``        | read text from file |
+| ``echo "World" > cnf.txt``    | ``echo("World", "cnf.txt")``     | save text to file |
 
 ## Command Execution
 
@@ -68,7 +66,7 @@ let result=$(`git status --porcelain`);
 
 ### eval()
 
-**eval()** should be used for running commands where the output does not need to be captured, but only printed to the console.  This helper is intended for long running commands or those where output does not need to be captured.  Example: To run `npm install`:
+**eval()** should be used for running commands where the output does not need to be captured, but only printed to the console (stdout).  This helper is intended for long running commands or those where output does not need to be captured.  Example: To run `npm install`:
 
 ```
 // Will print `npm install` output immediately as it happens
@@ -79,19 +77,34 @@ eval(`npm install`)
 
 ### Reading and Writing Files
 
-In Bash, reading files is usually done with the `cat` command (i.e. `config=$(cat cnf.txt)`) and writing to files is usally done with `cat` or `echo` and piping (i.e. `echo $cnf > cnf.txt`).  The same approaches can be used in jBash, using `$()` (reading: ``config=$(`cat cnf.txt`)``; writing: ``$(`echo ${cnf} > cnf.txt`)``).  But jBash also provides a `readFile` and `writeFile` helper for convenience.
+In Bash, reading files is usually done with the `cat` command (i.e. `config=$(cat cnf.txt)`) and writing to files is usally done with `cat` or `echo` and piping (i.e. `echo $cnf > cnf.txt`).  The same approaches can be used in jBash, using `$()` (reading: ``config=$(`cat cnf.txt`)``; writing: ``$(`echo ${cnf} > cnf.txt`)``).  But jBash also provides the `cat` and `echo` helpers for convenience.
 
-Example
+#### Reading
+
+The `cat` helper works just like the cat command where you pass in a file path argument and it returns the contents.  Unlike Bash, the output from the `cat` helper will be returned but _not_ sent to the console (stdout).  If you need to also print it to stdout you can simply call `echo` with the result of `cat`.  By default, "utf-8" encoding will be used when reading the file but you can pass an alternative encoding to be used as the second parameter.
 
 <pre>
-config=readFile(`cnf.txt`)
-writeFile(`cnf.txt`, cnf)
+// Read contents of cnf.txt and store in config variable
+config=cat("cnf.txt")
+
+// Print to console (stdout)
+echo(config)
+</pre>
+
+`
+#### Writing
+
+The `echo` helper will print text to console (stdout) when passed a single argument (`echo("Hello")`) but when specifying a file path as a second argument, the first argument (string) will be used to _replace_ the contents of that file.  This is equivalent to `echo $config > cnf.txt` in Bash.  By default, "utf-8" encoding will be used when writing to the file but you can pass an alternative encoding to be used as the second parameter.
+
+<pre>
+// Save config variable value to cnf.txt
+echo(config, "cnf.txt")
 </pre>
 
 
 ### Error Handling
 
-If a command exits with a non-zero status, the stderr will be echoed on console.  If the command was run with `$()`, the stderr will also be returned.  To throw an error and therefore halt the script unless the error is handled with `try / catch`, you can enable errexit option by calling `set("-e")` which behaves just like `set -e` in Bash.  The error will have properties `{ message, status, stderr }` that contain detail of the error.
+If a command exits with a non-zero status, the stderr will be echoed on console (stdout).  If the command was run with `$()`, the stderr will also be returned.  To throw an error and therefore halt the script unless the error is handled with `try / catch`, you can enable errexit option by calling `set("-e")` which behaves just like `set -e` in Bash.  The error will have properties `{ message, status, stderr }` that contain detail of the error.
 
 Example:
 

@@ -2,6 +2,32 @@ var assert = require("assert");
 var fs = require("fs");
 require("../index.js");
 
+describe("echo", function() {
+  it("should print text to stdout", function() {
+    let originalLog = console.log;
+    let loggedMessage = null;
+
+    // Override console.log so we can capture invocations
+    global.console.log = message => {
+      loggedMessage = message;
+    };
+
+    const echoMessage = "Test 1, 2, 3";
+    echo(echoMessage);
+
+    // Restore original console.log function before asserting
+    global.console.log = originalLog;
+    
+    assert.equal(loggedMessage, echoMessage);
+  });
+
+  it("should write text to a file when given a second argument", function() {
+    const [file, text] = ["/tmp/writeFile.txt", "hello there"];
+    echo(text, file);
+    assert.equal(text, fs.readFileSync(file));
+  });
+});
+
 describe("$ENVVAR", function() {
   it("should return environment variable value", function() {
     assert.equal(process.env.HOME, $HOME);
@@ -49,18 +75,10 @@ describe("eval", function() {
   });
 });
 
-describe("writeFile", function() {
-  it("should write text to a file", function() {
-    const [file, text] = ["/tmp/writeFile.txt", "hello there"];
-    writeFile(file, text);
-    assert.equal(text, fs.readFileSync(file));
-  });
-});
-
-describe("readFile", function() {
+describe("cat", function() {
   it("should read text from a file", function() {
     const [file, text] = ["/tmp/readFile.txt", "hello there"];
     fs.writeFileSync(file, text);
-    assert.equal(text, readFile(file));
+    assert.equal(text, cat(file));
   });
 });

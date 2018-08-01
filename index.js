@@ -28,7 +28,6 @@ for (let i = 1; i <= Math.max(10, args.length); i++) {
   }
 }
 global.cd = process.chdir;
-global.echo = console.log;
 global.exit = process.exit;
 global.env = process.env;
 // Environmental variables prefixed with $
@@ -44,6 +43,14 @@ global.readFile = (path, encoding = "utf-8") => {
 global.writeFile = (path, contents, encoding = "utf-8") => {
   fs.writeFileSync(path, contents, { encoding });
 };
+global.cat = global.readFile;
+global.echo = (contents, outPath, encoding) => {
+  if (outPath === undefined) {
+    console.log(contents);
+  } else {
+    global.writeFile(outPath, contents, encoding)
+  }
+}
 
 // Command execution
 global["$"] = (cmd, stream) => {
