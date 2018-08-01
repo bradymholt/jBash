@@ -75,11 +75,11 @@ let result=$(`git status --porcelain`);
 eval(`npm install`)
 ```
 
-### Reading and Writing Files
+## Reading and Writing Files
 
 In Bash, reading files is usually done with the `cat` command (i.e. `config=$(cat cnf.txt)`) and writing to files is usally done with `cat` or `echo` and piping (i.e. `echo $cnf > cnf.txt`).  The same approaches can be used in jBash, using `$()` (reading: ``config=$(`cat cnf.txt`)``; writing: ``$(`echo ${cnf} > cnf.txt`)``).  But jBash also provides the `cat` and `echo` helpers for convenience.
 
-#### Reading
+### Reading
 
 The `cat` helper works just like the cat command where you pass in a file path argument and it returns the contents.  Unlike Bash, the output from the `cat` helper will be returned but _not_ sent to the console (stdout).  If you need to also print it to stdout you can simply call `echo` with the result of `cat`.  By default, "utf-8" encoding will be used when reading the file but you can pass an alternative encoding to be used as the second parameter.
 
@@ -92,7 +92,7 @@ echo(config)
 </pre>
 
 `
-#### Writing
+### Writing
 
 The `echo` helper will print text to console (stdout) when passed a single argument (`echo("Hello")`) but when specifying a file path as a second argument, the first argument (string) will be used to _replace_ the contents of that file.  This is equivalent to `echo $config > cnf.txt` in Bash.  By default, "utf-8" encoding will be used when writing to the file but you can pass an alternative encoding to be used as the second parameter.
 
@@ -102,7 +102,7 @@ echo(config, "cnf.txt")
 </pre>
 
 
-### Error Handling
+## Error Handling
 
 If a command exits with a non-zero status, the stderr will be echoed on console (stdout).  If the command was run with `$()`, the stderr will also be returned.  To throw an error and therefore halt the script unless the error is handled with `try / catch`, you can enable errexit option by calling `set("-e")` which behaves just like `set -e` in Bash.  The error will have properties `{ message, status, stderr }` that contain detail of the error.
 
