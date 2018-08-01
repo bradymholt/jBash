@@ -17,7 +17,8 @@ global.set = opt => {
 // Aliases
 global.args = process.argv.slice(global.shebangInvoked ? 3 : 2);
 // Current filename aliased as $0
-global[`$0`] = process.argv[1];
+const path = require('path');
+global[`$0`] = path.basename(module.parent.filename);
 // Arguments aliased as $1, $2, etc.
 // $1 through $10, at a minimum, will be declared and have argument value or be set to undefined if not specified
 for (let i = 1; i <= Math.max(10, args.length); i++) {
@@ -36,7 +37,7 @@ for (let p in env) {
 }
 
 // File access
-let fs = require("fs");
+const fs = require("fs");
 global.readFile = (path, encoding = "utf-8") => {
   return fs.readFileSync(path, { encoding });
 };
