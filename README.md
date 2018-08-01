@@ -91,7 +91,6 @@ config=cat("cnf.txt")
 echo(config)
 </pre>
 
-`
 ### Writing
 
 The `echo` helper will print text to console (stdout) when passed a single argument (`echo("Hello")`) but when specifying a file path as a second argument, the first argument (string) will be used to _replace_ the contents of that file.  This is equivalent to `echo $config > cnf.txt` in Bash.  By default, "utf-8" encoding will be used when writing to the file but you can pass an alternative encoding to be used as the second parameter.
