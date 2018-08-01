@@ -202,6 +202,34 @@ require('uuid/v4')
 echo(uuidv4()) // -> '110ec58a-a0f2-4ac4-8393-c866d813b8d1'
 ```
 
+## TypeScript Support
+
+TypeScript declarations for jBash are available and specifed with `"types": "index.d.ts"` in the package.json file.  A clean way to use TypeScript with jBash is by using [ts-node](https://github.com/TypeStrong/ts-node).
+
+First, install ts-node and jBash globally:
+
+```
+npm install -g ts-node jbash
+```
+
+Then, create your jBash script file using a `.ts` file extension.
+
+myscript.ts:
+
+```
+#!/usr/bin/env ts-node
+require('./jbash.js)
+
+const contents: string = "Hello jBash from TypeScript";
+echo(contents)
+```
+
+Run it:
+```
+chmod +x ./myscript.ts
+./myscript.ts
+```
+
 ## Examples
 
 Looking at real-world scripts is a good way to get a feel for the library.
