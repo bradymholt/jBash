@@ -218,7 +218,7 @@ myscript.ts:
 
 ```
 #!/usr/bin/env ts-node
-require('jbash.js)
+import("jbash")
 
 const contents: string = "Hello jBash from TypeScript";
 echo(contents)
@@ -229,6 +229,12 @@ Run it:
 chmod +x ./myscript.ts
 ./myscript.ts
 ```
+
+And you should see the following printed to the console:
+```
+"Hello jBash from TypeScript
+```
+
 
 ## Examples
 
