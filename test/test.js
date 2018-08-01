@@ -35,8 +35,8 @@ describe("$ENVVAR", function() {
 });
 
 describe("arguments", function() {
-  it("$0 should return the file path of the current script", function() {
-    assert.equal(process.argv[1], $0);
+  it("$0 should return the file nmae of the current script", function() {
+    assert.equal(require("path").basename(__filename), $0);
   });
 
   it("$1 through $10 should be declared but undefined", function() {
