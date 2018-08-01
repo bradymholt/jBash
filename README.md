@@ -173,7 +173,7 @@ Rather than installing jBash globally, you can simply download it to a local fol
 First, download jBash:
 
 ```
-wget -O jbash.js https://raw.githubusercontent.com/bradyholt/jbash/master/index.js
+wget -O jbash.js https://raw.githubusercontent.com/bradymholt/jbash/master/index.js
 ```
 
 Then, in your script:
