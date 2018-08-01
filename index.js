@@ -18,7 +18,7 @@ global.set = opt => {
 global.args = process.argv.slice(global.shebangInvoked ? 3 : 2);
 // Current filename aliased as $0
 const path = require('path');
-global[`$0`] = path.basename(module.parent.filename);
+global[`$0`] = global.scriptName || path.basename(module.parent.filename);
 // Arguments aliased as $1, $2, etc.
 // $1 through $10, at a minimum, will be declared and have argument value or be set to undefined if not specified
 for (let i = 1; i <= Math.max(10, args.length); i++) {
