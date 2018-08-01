@@ -218,7 +218,7 @@ myscript.ts:
 
 ```
 #!/usr/bin/env ts-node
-require('./jbash.js)
+require('jbash.js)
 
 const contents: string = "Hello jBash from TypeScript";
 echo(contents)
