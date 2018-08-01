@@ -3,7 +3,7 @@
   "version": "1.44.0",
   "description": "Helpers for bash like shell scripting in JavaScript",
   "main": "index.js",
-  "typings": "index.d.ts",
+  "types": "index.d.ts",
   "bin": "./bin/jbash.js",
   "repository": {
     "type": "git",
