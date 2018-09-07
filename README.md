@@ -180,7 +180,7 @@ Then, in your script:
 
 ```
 #!/usr/bin/env node
-require('./jbash.js)
+require('./jbash.js')
 
 echo(`Hello jBash`)
 ```
