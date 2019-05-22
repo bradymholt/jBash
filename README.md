@@ -32,7 +32,7 @@ chmod +x script.js
 |---------------------------|--------------------------------------|-----------------------------------------|
 | ``echo "Hello"``              | ``echo("Hello")``                | print text to console (stdout) |
 | ``$0``                        | ``$0``                           | file path of current script |
-| ``$1, $2, ...``               | ``$1; $2; ...``                  | $1, $2, etc. variables contain args passed in |
+| ``$1, $2, ...``               | ``$1, $2, ...``                  | $1, $2, etc. variables contain args passed in |
 |                               | ``args[0], args[1]``             | arguments passed in are also in args array |
 | ``$HOME``                     | ``$HOME``                        | environment variables |
 |                               | ``env.HOME``                     | all env variables are also mapped on env var  |
