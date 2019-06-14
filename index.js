@@ -60,7 +60,7 @@ global["$"] = (cmd, stream) => {
   }
 
   let result = require("child_process").spawnSync(cmd, [], {
-    stdio: ["ignore", stream ? "inherit" : "pipe", stream ? "inherit" : "pipe"],
+    stdio: [0, stream ? "inherit" : "pipe", stream ? "inherit" : "pipe"],
     shell: "/bin/bash"
   });
 
