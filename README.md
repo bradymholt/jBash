@@ -232,7 +232,7 @@ chmod +x ./myscript.ts
 
 And you should see the following printed to the console:
 ```
-"Hello jBash from TypeScript
+Hello jBash from TypeScript
 ```
 
 
