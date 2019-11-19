@@ -90,3 +90,14 @@ global.eval = cmd => {
   return $(cmd, true);
 };
 global.exec = eval;
+
+// Error handling
+const handleUnhandledError = err => {
+  if (global.options.errexit) {
+    exit(err.status || 1);
+  } else {
+    throw err;
+  }
+};
+process.on("unhandledRejection", handleUnhandledError);
+process.on("uncaughtException", handleUnhandledError);
