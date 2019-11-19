@@ -82,3 +82,15 @@ describe("cat", function() {
     assert.equal(text, cat(file));
   });
 });
+
+describe("errorexit", function(){
+  it("should return failed command status code with errorexit on", function(){
+    let result = require("child_process").spawnSync("test/fixtures/error-script-with-errexit-on.js");    
+    assert.equal(result.status, 127);
+  });
+
+  it("should return 0 status code with errorexist off", function(){
+    let result = require("child_process").spawnSync("test/fixtures/error-script-with-errexit-off.js");    
+    assert.equal(result.status, 0);
+  })
+})
