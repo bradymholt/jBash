@@ -45,11 +45,24 @@ global.writeFile = (path, contents, encoding = "utf-8") => {
   fs.writeFileSync(path, contents, { encoding });
 };
 global.cat = global.readFile;
+global.printf = contents => {
+  process.stdout.write(contents);
+};
 global.echo = (contents, outPath, encoding) => {
   if (outPath === undefined) {
-    console.log(contents);
+    global.printf(contents + "\n");
   } else {
     global.writeFile(outPath, contents, encoding);
+  }
+};
+global.mkdir = path => {
+  if (!fs.existsSync(path)) {
+    fs.mkdirSync(path);
+  }
+};
+global.rmdir = path => {
+  if (fs.existsSync(path)) {
+    fs.rmdirSync(path);
   }
 };
 
