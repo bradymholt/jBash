@@ -21,7 +21,7 @@ declare const $8: string;
 declare const $9: string;
 declare const $10: string;
 
-declare function readFile(path: string, encoding?: string): void;
+declare function readFile(path: string, encoding?: string): string;
 declare const cat: typeof readFile;
 declare function writeFile(
   path: string,

@@ -136,7 +136,7 @@ try {
 
 ### npx
 
-By far the easiest way to use jBash is with a [npx](https://github.com/zkat/npx) [shebang](https://en.wikipedia.org/wiki/Shebang_(Unix)) which will allow your script to be executed directly without an npm install needed.
+By far the easiest way to use jBash is with a [npx](https://github.com/zkat/npx) [shebang](https://en.wikipedia.org/wiki/Shebang_(Unix)).
 
 #### macOS
 
@@ -155,6 +155,8 @@ Since Linux does not support multiple arguments in the shebang, you need to call
 
 echo("Hello jBash")
 ```
+
+npx will look for a local installation of jBash in `node_modules`, specified in a package.json file.  If found, it will use the installed version of jBash.  Otherwise, it will download the latest version from npm.  It is recommended to install jBash locally when using npx so that it will be available locally and not have to be downloaded each time.
 
 
 ### npm global install
