@@ -30,23 +30,30 @@ chmod +x script.js
 
 | Bash                      | jBash                            | notes                                   |
 |---------------------------|--------------------------------------|-----------------------------------------|
-| ``echo "Hello"``              | ``echo("Hello")``                | print text to console (stdout) |
+| Environment
 | ``$0``                        | ``$0``                           | file path of current script |
 | ``$1, $2, ...``               | ``$1, $2, ...``                  | $1, $2, etc. variables contain args passed in |
 |                               | ``args[0], args[1]``             | arguments passed in are also in args array |
 | ``$HOME``                     | ``$HOME``                        | environment variables |
 |                               | ``env.HOME``                     | all env variables are also mapped on env var  |
-| ``set -x``                    | ``set("-x")``                    | echos all commands  |
-|                               | ``options.xtrace=true``          | alternative to set("-x")  |
-| ``set -e``                    | ``set("-e")``                    | throw when a command exits with non-zero status |
-|                               | ``options.errexit=true``         | alternative to set("-x")  |
 | ``cd "/usr/bin"``             | ``cd("/usr/bin")``               | change current working directory |
 | ``exit 1``                    | ``exit(1)``                      | exit with code |
+| Config
+| ``set -x``                    | ``set("-x")``                    | echos all commands  |
+|                               | ``options.xtrace=true``          | alternative to set("-x")  |
+| ``set -e``                    | ``set("-e")``                    | throw when a command exits 
+|                               | ``options.errexit=true``         | alternative to set("-x")  |with non-zero status |
+| Command Execution
 | ``result=$(cmd.sh)``          | ``result=$("cmd.sh")``           | $(...) buffers output as return value |
-| ``eval ping g.cn``            | ``eval("ping g.cn")``            | eval() streams output to console (stdout) |
-|                               | ``exec("ping g.cn")``            | exec() is an alias for eval() |
+| ``eval ping g.cn``            | ``eval("ping g.cn")``            | eval() streams output to 
+|                               | ``exec("ping g.cn")``            | exec() is an alias for eval() |console (stdout) |
+| I/O
+| ``echo "Hello"``              | ``echo("Hello")``                | print text to stdout with trailing newline |
+| ``printf("one\ntwo``          | ``printf("one\ntwo")``           | print text to stdout without trailing newline (stdout) |
 | ``config=$(cat cnf.txt)``     | ``config=cat("cnf.txt")``        | read text from file |
 | ``echo "World" > cnf.txt``    | ``echo("World", "cnf.txt")``     | save text to file |
+| ``mkdir ./newDirName``        | ``mkdir("./newDirName")``        | create directory |
+| ``rmdir ./newDirName``        | ``rmdir("./newDirName")``        | delete directory |
 
 ## Command Execution
 
