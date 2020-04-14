@@ -81,9 +81,7 @@ global["$"] = (cmd, stream) => {
     let stderr = result.stderr
       ? result.stderr.toString().replace("/bin/sh: ", "")
       : null;
-    let msg = stderr || `Error running: ${cmd}`;
-
-    global.echo(msg);
+    let msg = stderr || `Error running: ${cmd}`;    
 
     if (global.options.errexit) {
       err = new Error(msg);
@@ -91,6 +89,8 @@ global["$"] = (cmd, stream) => {
       err.stderr = stderr;
       err.output = result.output;
       throw err;
+    } else {
+      global.echo(msg);
     }
 
     return !stream ? msg : null;
@@ -107,6 +107,9 @@ global.exec = eval;
 // Error handling
 const handleUnhandledError = err => {
   if (global.options.errexit) {
+    // Since errexit is on, error message was not printed when error was thrown.
+    // But, now we know the error was not handled so print the error before we exit.
+    global.echo(err.message);
     exit(err.status || 1);
   } else {
     throw err;
