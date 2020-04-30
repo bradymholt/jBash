@@ -215,7 +215,7 @@ echo(uuidv4()) // -> '110ec58a-a0f2-4ac4-8393-c866d813b8d1'
 
 TypeScript declarations for jBash are available and specifed with `"types": "index.d.ts"` in the package.json file.  A clean way to use TypeScript with jBash is by using [ts-node](https://github.com/TypeStrong/ts-node).
 
-First, install ts-node, typescript, and jBash globally:
+First, install ts-node, TypeScript, and jBash globally:
 
 ```
 npm install -g ts-node typescript jbash
