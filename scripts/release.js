@@ -14,12 +14,11 @@ let sourceContent = readFile(sourceFile);
 // Remove first line from source
 sourceContent = sourceContent.split("\n").slice(1).join("\n");
 // Prefix it
-writeFile(
-  sourceFile,
-  `\
+echo(`\
 // ${package.name} - v${package.version}\n${sourceContent}\
 // ${package.homepage}
-`
+`,
+ sourceFile
 );
 
 // Git commit/tag
