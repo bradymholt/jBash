@@ -30,7 +30,7 @@ chmod +x script.js
 
 | Bash                      | jBash                            | notes                                   |
 |---------------------------|--------------------------------------|-----------------------------------------|
-| Environment
+| **Environment**
 | ``$0``                        | ``$0``                           | file path of current script |
 | ``$1, $2, ...``               | ``$1, $2, ...``                  | $1, $2, etc. variables contain args passed in |
 |                               | ``args[0], args[1]``             | arguments passed in are also in args array |
@@ -38,16 +38,16 @@ chmod +x script.js
 |                               | ``env.HOME``                     | all env variables are also mapped on env var  |
 | ``cd "/usr/bin"``             | ``cd("/usr/bin")``               | change current working directory |
 | ``exit 1``                    | ``exit(1)``                      | exit with code |
-| Config
+| **Config**
 | ``set -x``                    | ``set("-x")``                    | echos all commands  |
 |                               | ``options.xtrace=true``          | alternative to set("-x")  |
 | ``set -e``                    | ``set("-e")``                    | throw when a command exits 
 |                               | ``options.errexit=true``         | alternative to set("-x")  |with non-zero status |
-| Command Execution
+| **Command Execution**
 | ``result=$(cmd.sh)``          | ``result=$("cmd.sh")``           | $(...) buffers output as return value |
 | ``eval ping g.cn``            | ``eval("ping g.cn")``            | eval() streams output to 
 |                               | ``exec("ping g.cn")``            | exec() is an alias for eval() |console (stdout) |
-| I/O
+| **I/O**
 | ``echo "Hello"``              | ``echo("Hello")``                | print text to stdout with trailing newline |
 | ``printf("one\ntwo``          | ``printf("one\ntwo")``           | print text to stdout without trailing newline |
 | ``config=$(cat cnf.txt)``     | ``config=cat("cnf.txt")``        | read text from file |
