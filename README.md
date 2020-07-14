@@ -49,7 +49,7 @@ chmod +x script.js
 |                               | ``exec("ping g.cn")``            | exec() is an alias for eval() |console (stdout) |
 | **I/O**
 | ``echo "Hello"``              | ``echo("Hello")``                | print text to stdout with trailing newline |
-| ``printf("one\ntwo``          | ``printf("one\ntwo")``           | print text to stdout without trailing newline |
+| ``printf("one\ntwo")``        | ``printf("one\ntwo")``           | print text to stdout without trailing newline |
 | ``config=$(cat cnf.txt)``     | ``config=cat("cnf.txt")``        | read text from file |
 | ``echo "World" > cnf.txt``    | ``echo("World", "cnf.txt")``     | save text to file |
 | ``mkdir ./newDirName``        | ``mkdir("./newDirName")``        | create directory |
