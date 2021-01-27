@@ -29,6 +29,8 @@ declare function writeFile(
   encoding?: string
 ): void;
 
+declare function dirExists(path: string): boolean;
+
 declare function $(cmd: string): string;
 declare function exec(cmd: string): null;
 declare const eval: typeof exec;

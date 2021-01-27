@@ -83,6 +83,20 @@ describe("cat", function () {
   });
 });
 
+describe("dirExists", function () {
+  it("should return true when directory exists", function () {
+    const path = "/tmp/newDir/";
+    fs.mkdirSync(path);
+    assert.equal(dirExists(path), true);
+    fs.rmdirSync(path);
+  });
+
+  it("should return false when directory does not exist", function () {
+    const path = "/tmp/newDir/";
+    assert.equal(dirExists(path), false);
+  });
+});
+
 describe("mkdir", function () {
   it("should create a directory", function () {
     const path = "/tmp/newDir/";

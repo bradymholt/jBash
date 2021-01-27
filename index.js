@@ -55,6 +55,9 @@ global.echo = (contents, outPath, encoding) => {
     global.writeFile(outPath, contents, encoding);
   }
 };
+global.dirExists = path => {
+  return fs.existsSync(path) && fs.statSync(path).isDirectory();
+};
 global.mkdir = path => {
   if (!fs.existsSync(path)) {
     fs.mkdirSync(path);
