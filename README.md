@@ -54,6 +54,7 @@ chmod +x script.js
 | ``echo "World" > cnf.txt``    | ``echo("World", "cnf.txt")``     | save text to file |
 | ``mkdir ./newDirName``        | ``mkdir("./newDirName")``        | create directory |
 | ``rmdir ./newDirName``        | ``rmdir("./newDirName")``        | delete directory |
+| ``if [ -d "./dirName" ] ``        | ``if (dirExists("./dirName"))``  | check if directory exists |
 
 ## Command Execution
 
