@@ -26,8 +26,9 @@ jobs:
           registry-url: "https://registry.npmjs.org"
       - run: npm install
       - name: Version and publish to npm
-        run: |          
+        run: |                    
           npm version minor --force -m "Version %s [build-skip]"
+          npm run prerelease
           npm set //registry.npmjs.org/:_authToken $NODE_AUTH_TOKEN
           npm publish
         env:

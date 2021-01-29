@@ -24,7 +24,7 @@
   "homepage": "https://github.com/bradyholt/jbash#readme",
   "scripts": {
     "test": "npx mocha",
-    "release": "bin/jbash-local.js ./scripts/release.js"
+    "prerelease": "./scripts/prefix-dist-with-version.js"
   },
   "devDependencies": {
     "mocha": "^8.2.1"
