@@ -21,7 +21,7 @@ global.args = process.argv.slice(global.shebangInvoked ? 3 : 2);
 const path = require("path");
 if (global.scriptName){
   // global.scriptName is set by ./bin scripts and used when jBash is used via npx
-  global[`$0`] = lobal.scriptName;
+  global[`$0`] = global.scriptName;
 } else if (!!module.parent) {
   global[`$0`] = path.basename(module.parent.filename);
 } else {
