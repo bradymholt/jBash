@@ -19,7 +19,15 @@ global.set = opt => {
 global.args = process.argv.slice(global.shebangInvoked ? 3 : 2);
 // Current filename aliased as $0
 const path = require("path");
-global[`$0`] = global.scriptName || path.basename(module.parent.filename);
+if (global.scriptName){
+  // global.scriptName is set by ./bin scripts and used when jBash is used via npx
+  global[`$0`] = lobal.scriptName;
+} else if (!!module.parent) {
+  global[`$0`] = path.basename(module.parent.filename);
+} else {
+  global[`$0`] = path.basename(process.argv[0]);
+}
+
 // Arguments aliased as $1, $2, etc.
 // $1 through $10, at a minimum, will be declared and have argument value or be set to undefined if not specified
 for (let i = 1; i <= Math.max(10, args.length); i++) {
