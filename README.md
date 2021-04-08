@@ -45,7 +45,7 @@ chmod +x script.js
 |                               | ``options.errexit=true``         | alternative to set("-x")  |with non-zero status |
 | **Command Execution**
 | ``result=$(cmd.sh)``          | ``result=$("cmd.sh")``           | $(...) buffers output as return value |
-| ``eval ping g.cn``            | ``eval("ping g.cn")``            | eval() streams output to 
+| ``eval ping g.cn``            | ``eval("ping g.cn")``            | eval() streams output to stdout
 |                               | ``exec("ping g.cn")``            | exec() is an alias for eval() |console (stdout) |
 | **I/O**
 | ``echo "Hello"``              | ``echo("Hello")``                | print text to stdout with trailing newline |
