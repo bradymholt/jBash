@@ -250,5 +250,5 @@ Hello jBash from TypeScript
 
 Looking at real-world scripts is a good way to get a feel for the library.
 
-- [jBash release script](https://github.com/bradyholt/jBash/blob/master/scripts/release.js)
+- [jBash source version prefix script](https://github.com/bradymholt/jBash/blob/master/scripts/source-version-prefix.js)
 - [Cron Expression Descriptor release script](https://github.com/bradyholt/cron-expression-descriptor/blob/master/scripts/release.js)
