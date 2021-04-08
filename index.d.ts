@@ -30,6 +30,8 @@ declare function writeFile(
 ): void;
 
 declare function dirExists(path: string): boolean;
+declare function mkdir(path: string): void;
+declare function rmdir(path: string): void;
 
 declare function $(cmd: string): string;
 declare function exec(cmd: string): null;
