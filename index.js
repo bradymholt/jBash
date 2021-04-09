@@ -1,4 +1,6 @@
-// jbash - v1.52.0
+// jbash - v1.55.0
+// https://github.com/bradyholt/jbash#readme
+// https://github.com/bradyholt/jbash#readme
 // https://github.com/bradyholt/jbash#readme
 
 global.options = { errexit: false, xtrace: false };
