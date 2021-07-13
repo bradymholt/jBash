@@ -51,6 +51,7 @@ chmod +x script.js
 | ``echo "Hello"``              | ``echo("Hello")``                | print text to stdout with trailing newline |
 | ``printf("one\ntwo")``        | ``printf("one\ntwo")``           | print text to stdout without trailing newline |
 | ``config=$(cat cnf.txt)``     | ``config=cat("cnf.txt")``        | read text from file |
+|                               | ``config=$("cat cnf.txt")``      | alternative for reading text from file |
 | ``echo "World" > cnf.txt``    | ``echo("World", "cnf.txt")``     | save text to file |
 | ``mkdir ./newDirName``        | ``mkdir("./newDirName")``        | create directory |
 | ``rmdir ./newDirName``        | ``rmdir("./newDirName")``        | delete directory |
