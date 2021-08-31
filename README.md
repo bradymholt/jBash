@@ -41,8 +41,8 @@ chmod +x script.js
 | **Config**
 | ``set -x``                    | ``set("-x")``                    | echos all commands  |
 |                               | ``options.xtrace=true``          | alternative to set("-x")  |
-| ``set -e``                    | ``set("-e")``                    | throw when a command exits 
-|                               | ``options.errexit=true``         | alternative to set("-x")  |with non-zero status |
+| ``set -e``                    | ``set("-e")``                    | throw when command exits with non-zero status
+|                               | ``options.errexit=true``         | alternative to set("-x")  |
 | **Command Execution**
 | ``result=$(cmd.sh)``          | ``result=$("cmd.sh")``           | $(...) buffers output as return value |
 | ``eval ping g.cn``            | ``eval("ping g.cn")``            | eval() streams output to stdout
