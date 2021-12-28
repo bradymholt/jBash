@@ -7,7 +7,7 @@
   "bin": "./bin/jbash.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bradyholt/jbash.git"
+    "url": "git+https://github.com/bradymholt/jbash.git"
   },
   "keywords": [
     "javascript",
@@ -19,9 +19,9 @@
   "author": "Brady Holt",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/bradyholt/jbash/issues"
+    "url": "https://github.com/bradymholt/jbash/issues"
   },
-  "homepage": "https://github.com/bradyholt/jbash#readme",
+  "homepage": "https://github.com/bradymholt/jbash#readme",
   "scripts": {
     "test": "npx mocha",
     "source-version-prefix": "bin/jbash-local.js ./scripts/source-version-prefix.js"
