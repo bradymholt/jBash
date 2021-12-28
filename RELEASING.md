@@ -1,3 +1,3 @@
 ```
-npm run release
+npm publish
 ```
