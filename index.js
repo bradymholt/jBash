@@ -1,10 +1,11 @@
 // jbash - v1.55.0
 // https://github.com/bradyholt/jbash#readme
-// https://github.com/bradyholt/jbash#readme
-// https://github.com/bradyholt/jbash#readme
 
-global.options = { errexit: false, xtrace: false };
-global.set = opt => {
+global.options = global.options || {};
+global.options.errexit = (typeof global.options.errexit === 'undefined') ? false : global.options.errexit;
+global.options.xtrace = (typeof global.options.xtrace === 'undefined') ? false : global.options.xtrace;
+
+global.set = (opt) => {
   if (!opt.match(/^(-|\+)/)) {
     throw new Error("Invalid set value");
   }
@@ -21,7 +22,7 @@ global.set = opt => {
 global.args = process.argv.slice(global.shebangInvoked ? 3 : 2);
 // Current filename aliased as $0
 const path = require("path");
-if (global.scriptName){
+if (global.scriptName) {
   // global.scriptName is set by ./bin scripts and used when jBash is used via npx
   global[`$0`] = global.scriptName;
 } else if (!!module.parent) {
@@ -56,7 +57,7 @@ global.writeFile = (path, contents, encoding = "utf-8") => {
   fs.writeFileSync(path, contents, { encoding });
 };
 global.cat = global.readFile;
-global.printf = contents => {
+global.printf = (contents) => {
   process.stdout.write(contents);
 };
 global.echo = (contents, outPath, encoding) => {
@@ -66,15 +67,15 @@ global.echo = (contents, outPath, encoding) => {
     global.writeFile(outPath, contents, encoding);
   }
 };
-global.dirExists = path => {
+global.dirExists = (path) => {
   return fs.existsSync(path) && fs.statSync(path).isDirectory();
 };
-global.mkdir = path => {
+global.mkdir = (path) => {
   if (!fs.existsSync(path)) {
     fs.mkdirSync(path);
   }
 };
-global.rmdir = path => {
+global.rmdir = (path) => {
   if (fs.existsSync(path)) {
     fs.rmdirSync(path);
   }
@@ -88,14 +89,12 @@ global["$"] = (cmd, stream) => {
 
   let result = require("child_process").spawnSync(cmd, [], {
     stdio: [0, stream ? "inherit" : "pipe", stream ? "inherit" : "pipe"],
-    shell: "/bin/bash"
+    shell: "/bin/bash",
   });
 
   if (result.status != 0) {
-    let stderr = result.stderr
-      ? result.stderr.toString().replace("/bin/sh: ", "")
-      : null;
-    let msg = stderr || `Error running: ${cmd}`;    
+    let stderr = result.stderr ? result.stderr.toString().replace("/bin/sh: ", "") : null;
+    let msg = stderr || `Error running: ${cmd}`;
 
     if (global.options.errexit) {
       err = new Error(msg);
@@ -109,17 +108,15 @@ global["$"] = (cmd, stream) => {
 
     return !stream ? msg : null;
   }
-  return !!result.stdout
-    ? result.stdout.toString().replace(/^\n|\n$/g, "")
-    : null;
+  return !!result.stdout ? result.stdout.toString().replace(/^\n|\n$/g, "") : null;
 };
-global.eval = cmd => {
+global.eval = (cmd) => {
   return $(cmd, true);
 };
 global.exec = eval;
 
 // Error handling
-const handleUnhandledError = err => {
+const handleUnhandledError = (err) => {
   if (global.options.errexit) {
     // Since errexit is on, error message was not printed when error was thrown.
     // But, now we know the error was not handled so print the error before we exit.
