@@ -124,3 +124,31 @@ describe("errorexit", function () {
     assert.equal(result.status, 0);
   });
 });
+
+describe("reloading jBash", function(){
+  // These tests ensure that if jBash is reloaded (can happen if loaded from npm and locally) that any options will not be overwritten.
+
+  it("should not reset errexit setting", function(){
+    set("-e")
+    assert.equal(global.options.errexit, true);
+
+    // Delete jBash from module cache and load it again
+    delete require.cache[require.resolve('../index.js')]; // delete from cash
+    require("../index.js");
+
+    // Esnure `errexit` is still true.  If jBash was reinitialized `errexit` would be set back to the default of `false`.
+    assert.equal(global.options.errexit, true);
+  });
+
+  it("should not reset xtrace setting", function(){
+    set("-x")
+    assert.equal(global.options.xtrace, true);
+
+    // Delete jBash from module cache and load it again
+    delete require.cache[require.resolve('../index.js')]; // delete from cash
+    require("../index.js");
+
+    // Esnure `errexit` is still true.  If jBash was reinitialized `errexit` would be set back to the default of `false`.
+    assert.equal(global.options.xtrace, true);
+  });
+});
