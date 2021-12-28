@@ -1,4 +1,4 @@
-// jbash - v1.64.0
+// jbash - v1.65.0
 // https://github.com/bradyholt/jbash#readme
 
 global.options = global.options || {};
