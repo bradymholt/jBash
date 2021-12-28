@@ -1,3 +1,1 @@
-```
-npm publish
-```
+Run the "Publish to npm Registry" GitHub Action
