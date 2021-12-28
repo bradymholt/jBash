@@ -1,6 +1,6 @@
 {
   "name": "jbash",
-  "version": "1.62.0",
+  "version": "1.63.0",
   "description": "Helpers for bash like shell scripting in JavaScript",
   "main": "index.js",
   "types": "index.d.ts",
@@ -24,7 +24,7 @@
   "homepage": "https://github.com/bradyholt/jbash#readme",
   "scripts": {
     "test": "npx mocha",
-    "preversion": "bin/jbash-local.js ./scripts/source-version-prefix.js && git add ./index.js"
+    "source-version-prefix": "bin/jbash-local.js ./scripts/source-version-prefix.js"
   },
   "devDependencies": {
     "mocha": "^8.2.1"
