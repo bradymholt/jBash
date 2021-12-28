@@ -35,7 +35,7 @@ describe("$ENVVAR", function () {
 });
 
 describe("arguments", function () {
-  it("$0 should return the file nmae of the current script", function () {
+  it("$0 should return the file name of the current script", function () {
     assert.equal(require("path").basename(__filename), $0);
   });
 
