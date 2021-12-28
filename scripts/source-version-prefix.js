@@ -11,8 +11,8 @@ cd(`${__dirname}/../`);
 let package = require("../package.json");
 let sourceFile = "index.js";
 let sourceContent = readFile(sourceFile);
-// Remove first line from source
-sourceContent = sourceContent.split("\n").slice(1).join("\n");
+// Remove first 2 lines from source
+sourceContent = sourceContent.split("\n").slice(2).join("\n");
 // Prefix it
 echo(`\
 // ${package.name} - v${package.version}
