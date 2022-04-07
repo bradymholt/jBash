@@ -1,8 +1,11 @@
 name: Publish to npm Registry
 
 on:
-  pull_request:
-    types: closed
+  workflow_run:
+    workflows: ["Build"]
+    branches: [master]
+    types:
+      - completed
   workflow_dispatch:
 
 jobs:
