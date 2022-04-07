@@ -119,7 +119,7 @@ global.exec = eval;
 const handleUnhandledError = (err) => {
   if (global.options.errexit) {
     // Since errexit is on, error message was not printed when error was thrown.
-    // But, now we know the error was not handled so print the error (on stderr) before we exit.    
+    // But, now we know the error was not handled so print the error (on stderr) before we exit.
     process.stderr.write(err.message);
     exit(err.status || 1);
   } else {
