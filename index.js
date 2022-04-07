@@ -1,5 +1,5 @@
-// jbash - v1.65.0
-// https://github.com/bradyholt/jbash#readme
+// jbash - v1.66.0
+// https://github.com/bradymholt/jbash#readme
 
 global.options = global.options || {};
 global.options.errexit = (typeof global.options.errexit === 'undefined') ? false : global.options.errexit;
