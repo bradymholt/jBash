@@ -103,7 +103,7 @@ global["$"] = (cmd, stream) => {
       err.output = result.output;
       throw err;
     } else {
-      global.echo(msg);
+      process.stderr.write(msg);      
     }
 
     return !stream ? msg : null;
@@ -119,8 +119,8 @@ global.exec = eval;
 const handleUnhandledError = (err) => {
   if (global.options.errexit) {
     // Since errexit is on, error message was not printed when error was thrown.
-    // But, now we know the error was not handled so print the error before we exit.
-    global.echo(err.message);
+    // But, now we know the error was not handled so print the error (on stderr) before we exit.    
+    process.stderr.write(err.message);
     exit(err.status || 1);
   } else {
     throw err;

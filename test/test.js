@@ -113,7 +113,7 @@ describe("errorexit", function () {
     );
     
     assert.equal(result.status, 127);
-      assert.equal(result.stdout.toString(), "Error running: script-does-not-exist.sh\n");
+      assert.equal(result.stderr.toString(), "/bin/bash: script-does-not-exist.sh: command not found\nError running: script-does-not-exist.sh");
 
   });
 
