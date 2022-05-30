@@ -1,6 +1,6 @@
 {
   "name": "jbash",
-  "version": "1.68.0",
+  "version": "1.69.0",
   "description": "Helpers for bash like shell scripting in JavaScript",
   "main": "index.js",
   "types": "index.d.ts",
