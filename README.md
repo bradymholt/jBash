@@ -1,5 +1,7 @@
 # jBash
 
+> :warning: Note: jBash is no longer being actively maintained.  Please use [jsh](https://github.com/bradymholt/jsh) instead.
+
 Helpers for Bash like shell scripting in JavaScript
 
 ![Build Status](https://github.com/bradymholt/jBash/workflows/build/badge.svg) [![NPM Package](https://img.shields.io/npm/v/jbash.svg)](https://www.npmjs.com/package/jbash)
