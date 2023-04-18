@@ -27,6 +27,6 @@
     "source-version-prefix": "bin/jbash-local.js ./scripts/source-version-prefix.js"
   },
   "devDependencies": {
-    "mocha": "^8.2.1"
+    "mocha": "^10.2.0"
   }
 }
